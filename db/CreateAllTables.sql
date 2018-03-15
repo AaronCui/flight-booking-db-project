@@ -113,7 +113,6 @@ CREATE TABLE Staff (
   PRIMARY KEY (email)
 );
 
-
 CREATE TABLE Reserves_Occupies_Reservation (
   reservation_id  CHAR(20),
   email           CHAR(50),

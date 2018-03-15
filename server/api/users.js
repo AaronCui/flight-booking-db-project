@@ -40,7 +40,7 @@ router.post('/users/update', bodyParser.json(), function (req, res, next) {
   const password = req.body.data.password
   const role = req.body.data.role
 
-  const query = 'UPDATE Users SET username = :username, password = :password, role = :role WHERE userid = :userid ;'
+  const query = 'UPDATE Users SET email = :username, password = :password, role = :role WHERE userid = :userid ;'
   connection.query(query,
     {
       type: connection.QueryTypes.UPDATE,
@@ -63,7 +63,7 @@ router.post('/users/add', bodyParser.json(), function (req, res, next) {
   const password = req.body.data.password
   const role = req.body.data.role
 
-  const query = 'INSERT INTO Users (username, password, role) VALUES (:username, :password, :role) ;'
+  const query = 'INSERT INTO Users (email, password, role) VALUES (:username, :password, :role) ;'
   connection.query(query,
     {
       type: connection.QueryTypes.INSERT,

@@ -4,12 +4,20 @@
       <div class="subsection">
         <form style="margin: 15px 15px;">
             <div style="margin: 10px 0;">
-              <span class="user-username">Username: </span>
+              <span class="user-username">Email: </span>
               <input type="text" :value="user.username" v-model="user.username"></input>
             </div>
             <div style="margin: 10px 0;">
               <span class="user-password">Password: </span>
               <input type="password" v-model="user.password"></input>
+            </div>
+            <div>
+                <span class="user-role">You are a: </span>
+                <select v-model="roles">
+                    <option v-for="role in roles" v-bind:value="roles.value">
+                        {{ role.text }}
+                    </option>
+                </select>
             </div>
         </form>
         <button type="button" class="button--grey" @click="submitUpdate">Update</button>
@@ -33,7 +41,12 @@ export default {
   },
 
   data () {
-    return {}
+    return {
+      roles: [
+        { text: 'Customer', value: '0' },
+        { text: 'Employee', value: '1' },
+        { text: 'Admin', value: '2' }
+      ]}
   },
 
   methods: {
@@ -50,7 +63,7 @@ export default {
             userid: self.user.userid,
             username: self.user.username,
             password: self.user.password,
-            role: 1 // TODO to user select / correct value
+            role: self.roles
           }})
         .then((res) => {
           // res.data should contain the url for redirecting... bad practice
@@ -95,6 +108,10 @@ export default {
     font-weight 500
     color #707070
   .user-password
+    font-size 24px
+    font-weight 500
+    color #707070
+  .user-role
     font-size 24px
     font-weight 500
     color #707070
