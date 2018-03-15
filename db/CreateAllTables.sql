@@ -93,6 +93,7 @@ CREATE TABLE Has_Seats_4 (
 
 CREATE TABLE Customer (
   email			        CHAR(50),
+  phone_no          CHAR(20),
   freq_flyer_miles 	INTEGER,
   PRIMARY KEY (email)
 );
