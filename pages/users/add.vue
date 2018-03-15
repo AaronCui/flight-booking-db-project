@@ -22,12 +22,12 @@
 import axios from '~/plugins/axios'
 
 export default {
-
   data () {
     return {
       userid: '',
       username: '',
-      password: ''
+      password: '',
+      role: 0 // default role for now
     }
   },
 
@@ -44,7 +44,8 @@ export default {
           {
             userid: self.userid,
             username: self.username,
-            password: self.password
+            password: self.password,
+            role: self.role
           }})
         .then((res) => {
           // res.data should contain the url for redirecting... bad practice

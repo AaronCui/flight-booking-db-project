@@ -49,7 +49,8 @@ export default {
           {
             userid: self.user.userid,
             username: self.user.username,
-            password: self.user.password
+            password: self.user.password,
+            role: 1 // TODO to user select / correct value
           }})
         .then((res) => {
           // res.data should contain the url for redirecting... bad practice

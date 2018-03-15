@@ -18,15 +18,15 @@ router.get('/users', function (req, res, next) {
 router.get('/users/:username', function (req, res, next) {
   const username = req.params.username
   const query = 'SELECT * FROM Users WHERE username = :username ;'
-  connection.query(query, 
-    { 
+  connection.query(query,
+    {
       type: connection.QueryTypes.SELECT,
       replacements: {
         username: username
       }
     })
     .then(user => {
-      if (user.length === 1 ) {
+      if (user.length === 1) {
         res.json(user[0])
       } else {
         res.status(404).json({})
@@ -38,14 +38,16 @@ router.post('/users/update', bodyParser.json(), function (req, res, next) {
   const userid = req.body.data.userid
   const username = req.body.data.username
   const password = req.body.data.password
+  const role = req.body.data.role
 
-  const query = 'UPDATE Users SET username = :username, password = :password WHERE userid = :userid ;'
+  const query = 'UPDATE Users SET username = :username, password = :password, role = :role WHERE userid = :userid ;'
   connection.query(query,
     {
       type: connection.QueryTypes.UPDATE,
       replacements: {
         username: username,
         password: password,
+        role: role,
         userid: userid
       }
     })
@@ -59,14 +61,16 @@ router.post('/users/add', bodyParser.json(), function (req, res, next) {
   const userid = req.body.data.userid
   const username = req.body.data.username
   const password = req.body.data.password
+  const role = req.body.data.role
 
-  const query = 'INSERT INTO Users (username, password) VALUES (:username, :password) ;'
+  const query = 'INSERT INTO Users (username, password, role) VALUES (:username, :password, :role) ;'
   connection.query(query,
     {
       type: connection.QueryTypes.INSERT,
       replacements: {
         username: username,
-        password: password
+        password: password,
+        role: role
       }
     })
     .then(result => {
