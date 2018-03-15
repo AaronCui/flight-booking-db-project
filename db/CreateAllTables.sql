@@ -51,13 +51,6 @@ CREATE TABLE Airplane_4 (
   PRIMARY KEY (plane_id)
 );
 
-
-CREATE TABLE Airport_1 (
-  country	  CHAR(2),	 -- ISO Alpha-2 Country code
-  language	CHAR(20),
-  PRIMARY KEY (country)
-);
-
 CREATE TABLE Airport_2 (
   code		  CHAR(5),
   country	  CHAR(2), 	-- ISO Alpha-2 Country code
