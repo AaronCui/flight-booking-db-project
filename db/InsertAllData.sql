@@ -108,4 +108,80 @@ VALUES ('kevin1@airplaneUsers.com', 123456789, 'Kevin', 1);
 INSERT INTO Staff (email, sin, name, level)
 VALUES ('smithLazy@airplaneUsers.com', 987654321, 'Smith', 2);
 
+-- LANDSAT_TAKESOFF_FLIGHT
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
+VALUES ('520', 'AC', '2018-05-20', 1234, 'YVR', 'SFO');
+
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
+VALUES ('092', 'CA', '2018-05-21', 1023, 'SFO', 'YVR');
+
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
+VALUES ('084', 'JP', '2018-06-02', 5048, 'LAX', 'NRT');
+
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
+VALUES ('022', 'AA', '2018-02-16', 9765, 'HNL', 'JFK');
+
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
+VALUES ('554', 'CX', '2018-02-16', 2458, 'SIN', 'HKG');
+
+-- HAS_SEATS TABLES
+INSERT INTO Has_Seats_1 (seat_no, seat_class)
+VALUES ('A01', 'first');
+
+INSERT INTO Has_Seats_1 (seat_no, seat_class)
+VALUES ('A02', 'first');
+
+INSERT INTO Has_Seats_1 (seat_no, seat_class)
+VALUES ('D19', 'business');
+
+INSERT INTO Has_Seats_1 (seat_no, seat_class)
+VALUES ('J10', 'economy');
+
+INSERT INTO Has_Seats_1 (seat_no, seat_class)
+VALUES ('J11', 'economy');
+
+INSERT INTO Has_Seats_2 (seat_no, seat_type)
+VALUES('A01', 'window');
+
+INSERT INTO Has_Seats_2 (seat_no, seat_type)
+VALUES('A02', 'row');
+
+INSERT INTO Has_Seats_2 (seat_no, seat_type)
+VALUES('D19', 'aisle');
+
+INSERT INTO Has_Seats_2 (seat_no, seat_type)
+VALUES('J10', 'row');
+
+INSERT INTO Has_Seats_2 (seat_no, seat_type)
+VALUES('J11', 'exit');
+
+INSERT INTO Has_Seats_3 (seat_class, seat_price)
+VALUES('first', 2500);
+
+INSERT INTO Has_Seats_3 (seat_class, seat_price)
+VALUES('business', 2000);
+
+INSERT INTO Has_Seats_3 (seat_class, seat_price)
+VALUES('premium', 1500);
+
+INSERT INTO Has_Seats_3 (seat_class, seat_price)
+VALUES('economy', 1000);
+
+INSERT INTO Has_Seats_3 (seat_class, seat_price)
+VALUES('luxury', 10000);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+VALUES ('A01','092', 'CA', '2018-05-21', 1);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+VALUES ('A02','092', 'CA', '2018-05-21', 1);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+VALUES ('D19','084', 'CA', '2018-06-02', 1);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+VALUES ('J10','022', 'CA', '2018-02-16', 1);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+VALUES ('J11','022', 'CA', '2018-02-16', 1);
 

@@ -18,7 +18,7 @@ CREATE TABLE Has_Seats_2 (
 );
 
 CREATE TABLE Has_Seats_3 (
-  seat_class	CHAR(5),
+  seat_class	CHAR(20),
   seat_price	INTEGER,  -- Smallest at cent
   PRIMARY KEY (seat_class)
 );
