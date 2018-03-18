@@ -46,22 +46,25 @@ INSERT INTO Airplane_3(model, firstclass_cap)
 VALUES('BOEING787', 0);
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
-VALUES('1234', '520', 'AC', '2018-05-20', 'BOEING777');
+VALUES(1234, '520', 'AC', '2018-05-20', 'BOEING777');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
-VALUES('9000', '099', 'UA', '2018-05-21', 'BOEING787');
+VALUES(9000, '099', 'UA', '2018-05-21', 'BOEING787');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
-VALUES('1023', '092', 'CA', '2018-05-21', 'AIRBUS320');
+VALUES(1023, '092', 'CA', '2018-05-21', 'AIRBUS320');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
-VALUES('5048', '084', 'JP', '2018-06-02', 'AIRBUS330');
+VALUES(5048, '084', 'JP', '2018-06-02', 'AIRBUS330');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
-VALUES('9765', '022', 'AA', '2018-02-16', 'AIRBUS350');
+VALUES(9765, '022', 'AA', '2018-02-16', 'AIRBUS350');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
-VALUES('2458', '554', 'CX', '2018-02-16', 'BOEING787');
+VALUES(2458, '554', 'CX', '2018-02-16', 'BOEING787');
+
+INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
+VALUES(9001, '100', 'DL', '2018-05-26', 'AIRBUS350');
 
 -- AIRPORTS
 INSERT INTO Airport_2(code, country, city, capacity)
@@ -141,6 +144,9 @@ VALUES ('520', 'AC', '2018-05-20', 1234, 'YVR', 'SFO');
 
 INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
 VALUES ('099', 'UA', '2018-05-21', 9000, 'SFO', 'YYZ');
+
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
+VALUES ('100', 'DL', '2018-05-26', 9001, 'YVR', 'YYZ');
 
 INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
 VALUES ('092', 'CA', '2018-05-21', 1023, 'SFO', 'YVR');
