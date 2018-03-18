@@ -221,3 +221,57 @@ VALUES('123459', 'bestAngela@lol.com', 'J10', '022', 'AA', '2018-02-16', 2, 0);
 
 INSERT INTO Reserves_Occupies_Reservation (reservation_id, email, seat_no, flight_no, airline, date, luggages, meal_pref)
 VALUES('123455', 'j.bean@gm.com', 'J11', '022', 'AA', '2018-02-16', 2, 2);
+
+-- PROMOTION_ITEM
+INSERT INTO Promotion_Item (promotion_id, promotion_item)
+VALUES('ABX22', 'Headphones');
+
+INSERT INTO Promotion_Item (promotion_id, promotion_item)
+VALUES('BBB45', 'Backpack');
+
+INSERT INTO Promotion_Item (promotion_id, promotion_item)
+VALUES('CML16', 'iPad Pro');
+
+INSERT INTO Promotion_Item (promotion_id, promotion_item)
+VALUES('YKK49', 'Flatscreen TV');
+
+INSERT INTO Promotion_Item (promotion_id, promotion_item)
+VALUES('UJN11', 'Adidas Yeezy Boosts');
+
+-- RESERVES_PROMOTION_ITEM
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123456', 'ABX22');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123456', 'CML16');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123456', 'BBB45');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123457', 'ABX22');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123457', 'BBB45');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123457', 'CML16');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123457', 'YKK49');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123457', 'UJN11');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123458', 'ABX22');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123459', 'ABX22');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123455', 'YKK49');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123455', 'UJN11');
+
