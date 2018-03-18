@@ -206,3 +206,18 @@ VALUES ('J10','022', 'AA', '2018-02-16', 1);
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
 VALUES ('J11','022', 'AA', '2018-02-16', 1);
 
+-- RESERVES_OCCUPIES_RESERVATION
+INSERT INTO Reserves_Occupies_Reservation (reservation_id, email, seat_no, flight_no, airline, date, luggages, meal_pref)
+VALUES('123456', 'aaroniscool@wut.com', 'A01', '092', 'CA', '2018-05-21', 2, 0);
+
+INSERT INTO Reserves_Occupies_Reservation (reservation_id, email, seat_no, flight_no, airline, date, luggages, meal_pref)
+VALUES('123457', 'kevinSmart@ubc.com', 'A02', '092', 'CA', '2018-05-21', 1, 1);
+
+INSERT INTO Reserves_Occupies_Reservation (reservation_id, email, seat_no, flight_no, airline, date, luggages, meal_pref)
+VALUES('123458', 'handsomeBrian@smooth.com', 'D19', '084', 'JP', '2018-06-02', 0, 0);
+
+INSERT INTO Reserves_Occupies_Reservation (reservation_id, email, seat_no, flight_no, airline, date, luggages, meal_pref)
+VALUES('123459', 'bestAngela@lol.com', 'J10', '022', 'AA', '2018-02-16', 2, 0);
+
+INSERT INTO Reserves_Occupies_Reservation (reservation_id, email, seat_no, flight_no, airline, date, luggages, meal_pref)
+VALUES('123455', 'j.bean@gm.com', 'J11', '022', 'AA', '2018-02-16', 2, 2);
