@@ -126,3 +126,19 @@ CREATE TABLE Reserves_Occupies_Reservation (
       ON DELETE SET NULL
       ON UPDATE CASCADE
 );
+
+CREATE TABLE Promotion_Item (
+	promotion_id CHAR(5),
+	promotion_item CHAR(20),
+	PRIMARY KEY (promotion_id)
+);
+
+CREATE TABLE Reserves_Promotion_Item (
+	reservation_id CHAR(20),
+	promotion_id CHAR(20),
+	PRIMARY KEY (reservation_id, promotion_id),
+	FOREIGN KEY (reservation_id)
+		REFERENCES Reserves_Occupies_Reservation (reservation_id),
+	FOREIGN KEY (promotion_id)
+		REFERENCES Promotion_Item
+);
