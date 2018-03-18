@@ -49,6 +49,9 @@ INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
 VALUES('1234', '520', 'AC', '2018-05-20', 'BOEING777');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
+VALUES('9000', '099', 'UA', '2018-05-21', 'BOEING787');
+
+INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
 VALUES('1023', '092', 'CA', '2018-05-21', 'AIRBUS320');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
@@ -97,6 +100,9 @@ VALUES('SIN', 'SG', 'Changi', 450);
 INSERT INTO Airport_2(code, country, city, capacity)
 VALUES('HKG', 'HK', 'Hong Kong', 800);
 
+INSERT INTO Airport_2(code, country, city, capacity)
+VALUES('YYZ', 'CA', 'Toronto', 700);
+
 -- CUSTOMERS
 INSERT INTO Customer (email, phone_no, freq_flyer_miles)
 VALUES('j.bean@gm.com', '604-999-2222', 2000);
@@ -132,6 +138,9 @@ VALUES ('smithLazy@airplaneUsers.com', 987654321, 'Smith', 2);
 -- LANDSAT_TAKESOFF_FLIGHT
 INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
 VALUES ('520', 'AC', '2018-05-20', 1234, 'YVR', 'SFO');
+
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
+VALUES ('099', 'UA', '2018-05-21', 9000, 'SFO', 'YYZ');
 
 INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
 VALUES ('092', 'CA', '2018-05-21', 1023, 'SFO', 'YVR');
@@ -247,6 +256,9 @@ VALUES('123456', 'CML16');
 
 INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
 VALUES('123456', 'BBB45');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123456', 'YKK49');
 
 INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
 VALUES('123457', 'ABX22');

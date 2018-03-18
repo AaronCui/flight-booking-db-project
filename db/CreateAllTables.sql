@@ -44,7 +44,7 @@ CREATE TABLE Airplane_3 (
 
 CREATE TABLE Airplane_4 (
   plane_id	INTEGER,
-  flght_no	CHAR(5),
+  flight_no	CHAR(5),
   airline		CHAR(5),
   date		  DATE,
   model		  CHAR(20),
