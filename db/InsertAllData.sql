@@ -76,6 +76,27 @@ VALUES('HND', 'JP', 'Tokyo', 120);
 INSERT INTO Airport_2(code, country, city, capacity)
 VALUES('PEK', 'CN', 'Beijing', 150);
 
+INSERT INTO Airport_2(code, country, city, capacity)
+VALUES('SFO', 'US', 'San Francisco', 300);
+
+INSERT INTO Airport_2(code, country, city, capacity)
+VALUES('LAX', 'US', 'Los Angeles', 1000);
+
+INSERT INTO Airport_2(code, country, city, capacity)
+VALUES('NRT', 'JP', 'Narita', 300);
+
+INSERT INTO Airport_2(code, country, city, capacity)
+VALUES('JFK', 'US', 'New York City', 900);
+
+INSERT INTO Airport_2(code, country, city, capacity)
+VALUES('HNL', 'US', 'Honolulu', 300);
+
+INSERT INTO Airport_2(code, country, city, capacity)
+VALUES('SIN', 'SG', 'Changi', 450);
+
+INSERT INTO Airport_2(code, country, city, capacity)
+VALUES('HKG', 'HK', 'Hong Kong', 800);
+
 -- CUSTOMERS
 INSERT INTO Customer (email, phone_no, freq_flyer_miles)
 VALUES('j.bean@gm.com', '604-999-2222', 2000);
@@ -177,11 +198,11 @@ INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('A02','092', 'CA', '2018-05-21', 1);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
-VALUES ('D19','084', 'CA', '2018-06-02', 1);
+VALUES ('D19','084', 'JP', '2018-06-02', 1);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
-VALUES ('J10','022', 'CA', '2018-02-16', 1);
+VALUES ('J10','022', 'AA', '2018-02-16', 1);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
-VALUES ('J11','022', 'CA', '2018-02-16', 1);
+VALUES ('J11','022', 'AA', '2018-02-16', 1);
 
