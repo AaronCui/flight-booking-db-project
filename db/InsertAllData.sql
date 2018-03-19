@@ -260,10 +260,10 @@ VALUES('business', 2000);
 INSERT INTO Has_Seats_3 (seat_class, seat_price)
 VALUES('economy', 1000);
 
-INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('A01','092', 'CA', '2018-05-21', 1);
 
-INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('A02','092', 'CA', '2018-05-21', 1);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
@@ -272,13 +272,13 @@ VALUES ('A03','092', 'CA', '2018-05-21', 0);
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('B09','092', 'CA', '2018-05-21', 0);
 
-INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('D19','084', 'JP', '2018-06-02', 1);
 
-INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('J10','022', 'AA', '2018-02-16', 1);
 
-INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved) 
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('J11','022', 'AA', '2018-02-16', 1);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
@@ -308,7 +308,7 @@ VALUES ('L01','100', 'DL', '2018-05-26', 0);
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('D06','100', 'DL', '2018-05-26', 0);
 
-LINSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('J01','554', 'CX', '2018-02-16', 0);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
@@ -388,4 +388,3 @@ VALUES('123455', 'YKK49');
 
 INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
 VALUES('123455', 'UJN11');
-
