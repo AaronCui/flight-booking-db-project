@@ -18,7 +18,7 @@ CREATE TABLE Has_Seats_2 (
 );
 
 CREATE TABLE Has_Seats_3 (
-  seat_class	CHAR(5),
+  seat_class	CHAR(20),
   seat_price	INTEGER,  -- Smallest at cent
   PRIMARY KEY (seat_class)
 );
@@ -44,18 +44,11 @@ CREATE TABLE Airplane_3 (
 
 CREATE TABLE Airplane_4 (
   plane_id	INTEGER,
-  flght_no	CHAR(5),
+  flight_no	CHAR(5),
   airline		CHAR(5),
   date		  DATE,
   model		  CHAR(20),
   PRIMARY KEY (plane_id)
-);
-
-
-CREATE TABLE Airport_1 (
-  country	  CHAR(2),	 -- ISO Alpha-2 Country code
-  language	CHAR(20),
-  PRIMARY KEY (country)
 );
 
 CREATE TABLE Airport_2 (
@@ -100,6 +93,7 @@ CREATE TABLE Has_Seats_4 (
 
 CREATE TABLE Customer (
   email			        CHAR(50),
+  phone_no          CHAR(20),
   freq_flyer_miles 	INTEGER,
   PRIMARY KEY (email)
 );
@@ -131,4 +125,20 @@ CREATE TABLE Reserves_Occupies_Reservation (
     REFERENCES Customer
       ON DELETE SET NULL
       ON UPDATE CASCADE
+);
+
+CREATE TABLE Promotion_Item (
+	promotion_id CHAR(5),
+	promotion_item CHAR(20),
+	PRIMARY KEY (promotion_id)
+);
+
+CREATE TABLE Reserves_Promotion_Item (
+	reservation_id CHAR(20),
+	promotion_id CHAR(20),
+	PRIMARY KEY (reservation_id, promotion_id),
+	FOREIGN KEY (reservation_id)
+		REFERENCES Reserves_Occupies_Reservation (reservation_id),
+	FOREIGN KEY (promotion_id)
+		REFERENCES Promotion_Item
 );
