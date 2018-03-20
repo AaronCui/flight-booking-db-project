@@ -11,6 +11,9 @@
             <nuxt-link :to="{ path: `/users/${user.email}`, params: { username: user.username }}">
               {{ user.email }}
             </nuxt-link>
+            <span v-if="user.role === 0">(Customer)</span>
+            <span v-else-if="user.role === 1">(Employee)</span>
+            <span v-else>(Admin)</span>
           </li>
         </ul>
       </div>

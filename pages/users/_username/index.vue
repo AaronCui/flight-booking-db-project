@@ -2,8 +2,11 @@
   <section class="user-view">
     <div class="content">
       <div class="subsection">
-        <span class="user-username" style="padding: 10px 0 10px 10px; margin: 10px 0 10px 0;">{{ user.username }}</span>
-        <span class="user-password" style="padding: 10px 10px; margin: 10px 0 10px 0;">{{ `(${user.password})` }}</span>
+        <span class="user-username" style="padding: 10px 0 10px 10px; margin: 10px 0 10px 0;">{{ user.email }}</span>
+        <span class="user-password" style="padding: 10px 10px; margin: 10px 0 10px 0;">Password: {{ user.password }}</span>
+        <span v-if="user.role === 0">Role: Customer</span>
+        <span v-else-if="user.role === 1">Role: Employee</span>
+        <span v-else>Role: Admin</span>
         <nuxt-link :to="{ path: `/users/${user.email}/update`, params: { username: user.username }}">Update</nuxt-link>
       </div>
     </div>

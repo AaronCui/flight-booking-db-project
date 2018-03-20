@@ -35,20 +35,20 @@ router.get('/users/:username', function (req, res, next) {
 })
 
 router.post('/users/update', bodyParser.json(), function (req, res, next) {
-  const userid = req.body.data.userid
+  console.log(req.body.data)
+  // const userid = req.body.data.userid
   const username = req.body.data.username
   const password = req.body.data.password
   const role = req.body.data.role
 
-  const query = 'UPDATE Users SET email = :username, password = :password, role = :role WHERE userid = :userid ;'
+  const query = 'UPDATE Users SET password = :password, role = :role WHERE email = :username ;'
   connection.query(query,
     {
       type: connection.QueryTypes.UPDATE,
       replacements: {
         username: username,
         password: password,
-        role: role,
-        userid: userid
+        role: role
       }
     })
     .then(result => {
