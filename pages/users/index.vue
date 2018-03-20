@@ -8,7 +8,7 @@
         </div>
         <ul style="list-style-type: none; padding: 0; margin: 0;">
           <li v-for="(user, index) in users" :key="index" style="padding: 10px 20px; margin: 0 25px; position: relative;">
-            <nuxt-link :to="{ path: `/users/${user.username}`, params: { username: user.username }}">
+            <nuxt-link :to="{ path: `/users/${user.email}`, params: { username: user.username }}">
               {{ user.email }}
             </nuxt-link>
           </li>

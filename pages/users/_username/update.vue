@@ -77,7 +77,7 @@ export default {
 
   head () {
     return {
-      title: `Update User: ${this.user.username}`
+      title: `Update User: ${this.user.email}`
     }
   }
 }
