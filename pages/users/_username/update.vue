@@ -5,7 +5,7 @@
         <form style="margin: 15px 15px;">
             <div style="margin: 10px 0;">
               <span class="user-username">Email: </span>
-              <input type="text" :value="user.username" v-model="user.username"></input>
+              <input type="text" :value="user.email" v-model="user.email"></input>
             </div>
             <div style="margin: 10px 0;">
               <span class="user-password">Password: </span>
@@ -13,14 +13,14 @@
             </div>
             <div>
                 <span class="user-role">You are a: </span>
-                <select v-model="roles">
-                    <option v-for="role in roles" v-bind:value="roles.value">
-                        {{ role.text }}
+                <select v-model="selected">
+                    <option v-for="option in options" v-bind:value="option.value">
+                        {{ option.text }}
                     </option>
                 </select>
             </div>
         </form>
-        <button type="button" class="button--grey" @click="submitUpdate">Update</button>
+        <button type="button" class="button--grey" v-on:click="submitUpdate">Update</button>
       </div>
     </div>
   </section>
@@ -42,11 +42,13 @@ export default {
 
   data () {
     return {
-      roles: [
-        { text: 'Customer', value: '0' },
-        { text: 'Employee', value: '1' },
-        { text: 'Admin', value: '2' }
-      ]}
+      selected: 'Customer',
+      options: [
+        {text: 'Customer', value: '0'},
+        {text: 'Employee', value: '1'},
+        {text: 'Admin', value: '2'}
+      ]
+    }
   },
 
   methods: {
@@ -60,10 +62,10 @@ export default {
           },
         data:
           {
-            userid: self.user.userid,
-            username: self.user.username,
+            // userid: self.user.userid,
+            username: self.user.email,
             password: self.user.password,
-            role: self.roles
+            role: self.selected
           }})
         .then((res) => {
           // res.data should contain the url for redirecting... bad practice
@@ -77,7 +79,7 @@ export default {
 
   head () {
     return {
-      title: `Update User: ${this.user.username}`
+      title: `Update User: ${this.user.email}`
     }
   }
 }
