@@ -3,14 +3,38 @@ var connection = require('../configs/sequelize')
 const bodyParser = require('body-parser')
 
 const router = Router()
+const roles=['Customer', 'Staff', 'Admin']
 
 /* GET users listing. */
 router.get('/users', function (req, res, next) {
+  console.log ("Retrieving users...");
   const query = 'SELECT * FROM Users;'
   connection.query(query, { type: connection.QueryTypes.SELECT })
     .then(users => {
       console.log(users)
       res.json(users)
+    })
+})
+
+/* Authenticate USER login. */
+router.post('/users/auth', bodyParser.json(), function (req, res, next) {
+  console.log ("Validating Login for:" + req.body.email);
+  const email = req.body.email
+  const password = req.body.password
+  const query = 'SELECT password, role FROM Users WHERE email = :email ;'
+  connection.query(query,
+    {
+      type: connection.QueryTypes.SELECT,
+      replacements: {
+        email: email
+      }
+    })
+    .then(result => {
+      if (result.length != 1)
+        res.status(404).json({})  //assert that 1 user was found
+      if (result[0].password == password){
+        res.send('/users/' + roles[result[0].role])
+      }
     })
 })
 
