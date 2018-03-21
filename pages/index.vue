@@ -5,8 +5,16 @@
       <h1 class="title">
         Demo Project
       </h1>
+      <div style="margin: 10px 0;">
+        <span class="user-email">Email: </span>
+        <input type="text" :value="email" v-model="email"></input>
+      </div>
+      <div style="margin: 8px 0;">
+        <span class="user-password">Password: </span>
+        <input type="password" v-model="password"></input>
+      </div>
       <div class="links">
-        <nuxt-link class="button--grey link" style="margin-left: 15px;" to="/users">View Users</nuxt-link>
+        <button type="button" class="button--grey" style="margin-left: 15px;" @click="login()">Login</button>
       </div>
     </div>
   </section>
@@ -14,8 +22,38 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import axios from '~/plugins/axios'
 
 export default {
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+
+  methods: {
+    login () {
+      let self = this
+      console.log(self.email)
+
+      axios.post('/api/users/auth', {email: self.email, password: self.password})
+        .then((res) => {
+          // res.data should contain the url for redirecting... bad practice
+          self.$nuxt.$router.replace({ path: res.data })
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    }
+  },
+
+  head () {
+    return {
+      title: `Login`
+    }
+  },
+
   components: {
     Logo
   }

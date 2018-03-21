@@ -3,19 +3,18 @@
     <div class="content">
       <div class="subsection">
         <div style="margin: 25px 10px;">
-          <span class="subsection-title" style="vertical-align: middle;">Users in Database</span>
-          <nuxt-link class="button--grey" style="padding: 5px 20px; text-decoration: none;" to="/users/add">Add User</nuxt-link>
+          <span class="subsection-title" style="vertical-align: middle;">Admin Account</span>
+          <div class="container">
+            <ul style="list-style-type: none; padding: 0; margin: 0;">
+              <li style="padding: 10px 5px; position: relative;">
+                <nuxt-link class="button--grey" to="/users">View User</nuxt-link>
+              </li>
+              <li style="padding: 10px 5px; position: relative;">
+                <nuxt-link class="button--grey" to="/users/add">Add User</nuxt-link>
+              </li>
+            </ul>
+          </div>
         </div>
-        <ul style="list-style-type: none; padding: 0; margin: 0;">
-          <li v-for="(user, index) in users" :key="index" style="padding: 10px 20px; margin: 0 25px; position: relative;">
-            <nuxt-link :to="{ path: `/users/${user.email}`, params: { username: user.username }}">
-              {{ user.email }}
-            </nuxt-link>
-            <span v-if="user.role === 0">(Customer)</span>
-            <span v-else-if="user.role === 1">(Employee)</span>
-            <span v-else>(Admin)</span>
-          </li>
-        </ul>
       </div>
     </div>
   </section>
@@ -32,7 +31,7 @@ export default {
 
   head () {
     return {
-      title: 'Users'
+      title: 'Admin'
     }
   }
 }
