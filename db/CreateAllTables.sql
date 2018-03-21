@@ -51,7 +51,7 @@ CREATE TABLE Airplane_4 (
   PRIMARY KEY (plane_id)
 );
 
-CREATE TABLE Airport_2 (
+CREATE TABLE Airport (
   code		  CHAR(5),
   country	  CHAR(2), 	-- ISO Alpha-2 Country code
   city		  CHAR(20),
@@ -71,9 +71,9 @@ CREATE TABLE LandsAt_TakesOff_Flight (
   FOREIGN KEY (plane_id)
     REFERENCES Airplane_4 (plane_id),
   FOREIGN KEY (landsAt_airport)
-    REFERENCES Airport_2 (code),
+    REFERENCES Airport (code),
   FOREIGN KEY (takesOff_airport)
-    REFERENCES Airport_2 (code)
+    REFERENCES Airport (code)
 );
 
 
@@ -92,7 +92,8 @@ CREATE TABLE Has_Seats_4 (
 
 
 CREATE TABLE Customer (
-  email			        CHAR(50),
+  email             CHAR(50) UNIQUE NOT NULL,
+  password          TEXT NOT NULL,
   phone_no          CHAR(20),
   freq_flyer_miles 	INTEGER,
   PRIMARY KEY (email)
@@ -100,10 +101,11 @@ CREATE TABLE Customer (
 
 
 CREATE TABLE Staff (
-  email		CHAR(50),
-  sin     INTEGER,
-  name    CHAR(20),
-  level   INTEGER,
+  email     CHAR(50) UNIQUE NOT NULL,
+  password  TEXT NOT NULL,
+  sin       INTEGER UNIQUE NOT NULL,
+  name      CHAR(20) NOT NULL,
+  level     INTEGER,
   PRIMARY KEY (email)
 );
 
