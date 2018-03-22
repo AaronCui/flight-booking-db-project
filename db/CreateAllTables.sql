@@ -96,8 +96,9 @@ CREATE TABLE Users(
   password      TEXT NOT NULL,
   first_name    CHAR(20) NOT NULL,
   last_name     CHAR(20) NOT NULL,
-  role          INTEGER,
-  PRIMARY KEY (email)
+  access_level  INTEGER,
+  PRIMARY KEY   (email),
+  CHECK         (access_level >= 0 AND access_level <= 2)
 );
 
 CREATE TABLE Customer (

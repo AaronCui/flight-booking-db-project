@@ -29,9 +29,9 @@ DROP TABLE IF EXISTS Staff;
 -- References are mostly the top 5 tables here
 DROP TABLE IF EXISTS Reserves_Occupies_Reservation;
 
-DROP TABLE IF EXISTS Users;
-
 DROP TABLE IF EXISTS Customer;
+
+DROP TABLE IF EXISTS Users;
 
 DROP TABLE IF EXISTS Has_Seats_4;
 
