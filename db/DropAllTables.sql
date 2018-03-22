@@ -31,6 +31,8 @@ DROP TABLE IF EXISTS Reserves_Occupies_Reservation;
 
 DROP TABLE IF EXISTS Customer;
 
+DROP TABLE IF EXISTS Users;
+
 DROP TABLE IF EXISTS Has_Seats_4;
 
 DROP TABLE IF EXISTS LandsAt_TakesOff_Flight;

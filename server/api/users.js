@@ -8,7 +8,7 @@ const roles=['Customer', 'Staff', 'Admin']
 /* GET users listing. */
 router.get('/users', function (req, res, next) {
   console.log ("Retrieving users...");
-  const query = 'SELECT * FROM Users;'
+  const query = 'SELECT * FROM users; '
   connection.query(query, { type: connection.QueryTypes.SELECT })
     .then(users => {
       console.log(users)

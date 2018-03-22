@@ -13,7 +13,7 @@
             </nuxt-link>
             <span v-if="user.role === 0">(Customer)</span>
             <span v-else-if="user.role === 1">(Employee)</span>
-            <span v-else>(Admin)</span>
+            <span v-else>(Undefined)</span>
           </li>
         </ul>
       </div>
