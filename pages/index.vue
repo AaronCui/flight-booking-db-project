@@ -16,6 +16,9 @@
       <div class="links">
         <button type="button" class="button--grey" style="margin-left: 15px;" @click="login()">Login</button>
       </div>
+      <nuxt-link :to="{ path: `/flights`,}">
+        CLICK HERE TO SEE LE FLIGHTS BABY
+      </nuxt-link>
     </div>
   </section>
 </template>
