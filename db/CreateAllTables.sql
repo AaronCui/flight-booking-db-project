@@ -91,22 +91,32 @@ CREATE TABLE Has_Seats_4 (
 );
 
 
+CREATE TABLE Users(
+  email         VARCHAR(50) UNIQUE NOT NULL,
+  password      TEXT NOT NULL,
+  first_name    CHAR(20) NOT NULL,
+  last_name     CHAR(20) NOT NULL,
+  role          INTEGER,
+  PRIMARY KEY (email)
+);
+
 CREATE TABLE Customer (
   email             CHAR(50) UNIQUE NOT NULL,
-  password          TEXT NOT NULL,
   phone_no          CHAR(20),
   freq_flyer_miles 	INTEGER,
-  PRIMARY KEY (email)
+  PRIMARY KEY (email),
+  FOREIGN KEY (email)
+    REFERENCES Users(email)
 );
 
 
 CREATE TABLE Staff (
   email     CHAR(50) UNIQUE NOT NULL,
-  password  TEXT NOT NULL,
   sin       INTEGER UNIQUE NOT NULL,
-  name      CHAR(20) NOT NULL,
   level     INTEGER,
-  PRIMARY KEY (email)
+  PRIMARY KEY (email),
+  FOREIGN KEY (email)
+    REFERENCES Users(email)
 );
 
 CREATE TABLE Reserves_Occupies_Reservation (
