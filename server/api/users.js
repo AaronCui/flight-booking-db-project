@@ -21,12 +21,13 @@ router.post('/users/auth', bodyParser.json(), function (req, res, next) {
   console.log ("Validating Login for:" + req.body.email);
   const email = req.body.email
   const password = req.body.password
-  const query = 'SELECT password, role FROM Users WHERE email = :email ;'
+  const query = 'SELECT password, role FROM Users WHERE email = :email and password = :password;'
   connection.query(query,
     {
       type: connection.QueryTypes.SELECT,
       replacements: {
-        email: email
+        email: email,
+        password: password
       }
     })
     .then(result => {

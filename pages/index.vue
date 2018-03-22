@@ -3,7 +3,7 @@
     <div>
     <Logo />
       <h1 class="title">
-        Demo Project
+        Flights R' Us
       </h1>
       <div style="margin: 10px 0;">
         <span class="user-email">Email: </span>
@@ -36,6 +36,7 @@ export default {
     login () {
       let self = this
       console.log(self.email)
+      console.log(self.password)
 
       axios.post('/api/users/auth', {email: self.email, password: self.password})
         .then((res) => {
@@ -44,6 +45,7 @@ export default {
         })
         .catch((e) => {
           console.log(e)
+          alert('Incorrect username/password')
         })
     }
   },
