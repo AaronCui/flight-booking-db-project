@@ -16,6 +16,9 @@
       <div class="links">
         <button type="button" class="button--grey" style="margin-left: 15px;" @click="login()">Login</button>
       </div>
+      <div>
+        <nuxt-link :to="{ path: `/search`, }" >Search</nuxt-link>
+      </div>
     </div>
   </section>
 </template>
