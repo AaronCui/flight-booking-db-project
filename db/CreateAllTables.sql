@@ -17,13 +17,6 @@ CREATE TABLE Has_Seats_2 (
   PRIMARY KEY (seat_no)
 );
 
-CREATE TABLE Has_Seats_3 (
-  seat_class	CHAR(20),
-  seat_price	INTEGER,  -- Smallest at cent
-  PRIMARY KEY (seat_class)
-);
-
-
 CREATE TABLE Airplane_1 (
   model		      CHAR(20),
   business_cap  INTEGER,
@@ -76,6 +69,18 @@ CREATE TABLE LandsAt_TakesOff_Flight (
     REFERENCES Airport (code)
 );
 
+CREATE TABLE Has_Seats_3 (
+  seat_class  CHAR(20),
+  flight_no	  CHAR(5),
+  airline		  CHAR(5),
+  date		    DATE,
+  seat_price	INTEGER,  -- Smallest at cent
+  PRIMARY KEY (seat_class, flight_no, airline, date),
+  FOREIGN KEY (flight_no, airline, date)
+    REFERENCES LandsAt_TakesOff_Flight (flight_no, airline, date)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
 
 CREATE TABLE Has_Seats_4 (
   seat_no   CHAR(5),
