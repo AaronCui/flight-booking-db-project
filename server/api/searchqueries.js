@@ -5,21 +5,20 @@ const bodyParser = require('body-parser')
 const router = Router()
 
 router.post('/search/destdate', bodyParser.json(), function (req, res, next) {
-  console.log ("Searching flight by destination and date");
-  console.log("Destination: " + req.body.data.destination + " " + "Date: " + req.body.data.date);
-  const destination = req.body.data.destination;
-  const date = req.body.data.date;
+  console.log ("Searching flight...");
+  let select = req.body.data.colsSelected;
+  select = select.join(", ");
+  // console.log("Destination: " + req.body.data.destination + " " + "Date: " + req.body.data.date);
+  const queryParams = req.body.data.queryParams;
+  const where = Object.keys(queryParams).map(function (x) {return x + ' = ' + queryParams[x]}).join(' AND ');
   const query =
-      'SELECT flight_no, airline, takesoff_airport ' +
+      'SELECT ' + select + ' ' +
       'FROM landsat_takesoff_flight ' +
-      'WHERE landsat_airport = :destination AND date = :date;';
+      'WHERE ' + where + ';';
+  console.log(query);
   connection.query(query,
     {
-      type: connection.QueryTypes.SELECT,
-      replacements: {
-        destination: destination,
-        date: date
-      }
+      type: connection.QueryTypes.SELECT
     })
     .then(result => {
       res.json(result)
