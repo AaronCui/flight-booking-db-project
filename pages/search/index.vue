@@ -41,7 +41,7 @@
         </div>
         <div>
           <br>
-          <button type='button' class='button--grey' style='margin-left: 15px;' @click='search1()'>Search</button>
+          <button type='button' class='button--grey' style='margin-left: 15px;' @click='search()'>Search</button>
         </div>
         <div style='margin: 8px 0;'>
           <table id='flight-results'>
@@ -53,6 +53,12 @@
             <tbody>
               <tr v-for='row in rows'>
                 <td v-for='col in columns'>{{row[col]}}</td>
+                <br>
+              </tr>
+              <tr v-for="search in searched">
+                <nuxt-link :to="{ path: `search/${ search.flight_no.trim() }/${ search.airline.trim() }/${ search.date.trim() }`, }">
+                  View seats
+                </nuxt-link>
               </tr>
             </tbody>
           </table>
@@ -66,6 +72,7 @@
 import axios from '~/plugins/axios'
 
 export default {
+
   data () {
     return {
       destination: '',
@@ -73,38 +80,48 @@ export default {
       flight_no: '',
       airline: '',
       departure: '',
+      checked: '',
       colsSelected: [],
       rows: [],
-      columns: []
+      columns: [],
+      queryParams: {},
+      searched: [],
+      i: 0
+    }
+  },
+
+  computed: {
+    link: function () {
+      return this.i++
     }
   },
 
   methods: {
-    search1 () {
+    search () {
       let self = this
 
-      const queryParams = {
-        landsAt_airport: self.destination,
+      self.queryParams = {
+        landsAt_airport: self.destination.toUpperCase(),
         date: self.date,
         flight_no: self.flight_no,
         airline: self.airline,
-        takesOff_airport: self.departure
+        takesOff_airport: self.departure.toUpperCase()
       }
 
-      for (const param of Object.keys(queryParams)) {
-        if (queryParams[param] === '') {
-          delete queryParams[param]
+      for (const param of Object.keys(self.queryParams)) {
+        if (self.queryParams[param] === '') {
+          delete self.queryParams[param]
         } else {
-          queryParams[param] = "'" + queryParams[param] + "'"
+          self.queryParams[param] = "'" + self.queryParams[param] + "'"
         }
       }
 
-      axios.post('/api/search/destdate', {
+      axios.post('/api/search/flights', {
         headers: {
           'Content-Type': 'application/json'
         },
         data: {
-          queryParams: queryParams,
+          queryParams: self.queryParams,
           colsSelected: self.colsSelected
         }
       }).then((res) => {
@@ -112,6 +129,20 @@ export default {
         self.columns = Object.keys(self.rows[0])
       }).catch((e) => {
         alert(e) // TODO - what to do with empty result?
+      })
+
+      axios.post('/api/search/flights', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          queryParams: self.queryParams,
+          colsSelected: ['flight_no', 'airline', 'date']
+        }
+      }).then((res) => {
+        self.searched = res.data
+      }).catch((e) => {
+        alert(e)
       })
     }
   }
