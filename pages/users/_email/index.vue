@@ -3,14 +3,16 @@
     <div class="content">
       <div class="subsection">
         <div style="margin: 25px 10px;">
-          <span class="subsection-title" style="vertical-align: middle;">Customer: EMAIL HERE</span>
+          <div class="user-username" style="padding: 10px 0 10px 10px; margin: 10px 0 10px 0;">Hello "{{ user.email }}"!</div>
+          <div class="user-password" style="padding: 0 0 0 10px; margin: 10px 0 10px 0;">Your Password: {{ user.password }}</div>
+          <div style="padding: 0 0 0 10px; margin: 10px 0 10px 0;">Your Role: Customer</div>
           <div class="container">
             <ul style="list-style-type: none; padding: 0; margin: 0;">
               <li style="padding: 10px 5px; position: relative;">
-                <nuxt-link class="button--grey" to="/users/update">Change User Info</nuxt-link>
+                <nuxt-link class="button--grey" :to="{ path: `/users/${user.email}/updatephone`, params: { email: user.email }}">Update Phone Number</nuxt-link>
               </li>
               <li style="padding: 10px 5px; position: relative;">
-                <nuxt-link class="button--grey" to="/users">Reservations</nuxt-link>
+                <nuxt-link class="button--grey" to="/">Flights (** NOT ROUTED)</nuxt-link>
               </li>
             </ul>
           </div>
@@ -24,14 +26,19 @@
 import axios from '~/plugins/axios'
 
 export default {
-  async asyncData () {
-    let { data } = await axios.get('/api/users')
-    return { users: data }
+  name: 'email',
+  asyncData ({ params, error }) {
+    return axios.get('/api/users/' + params.email)
+      .then((res) => {
+        return { user: res.data }
+      })
+      .catch((e) => {
+        error({ statusCode: 404, message: 'User not found' })
+      })
   },
-
   head () {
     return {
-      title: 'Customer'
+      title: `User: ${this.user.email}`
     }
   }
 }

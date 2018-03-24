@@ -4,23 +4,15 @@
       <div class="subsection">
         <form style="margin: 15px 15px;">
             <div style="margin: 10px 0;">
-              <span class="user-username">Email: </span>
-              <input type="text" :value="user.email" v-model="user.email"></input>
+              <span class="user-username" style="padding: 10px 0 10px 10px; margin: 10px 0 10px 0;">User: {{ user.email }}</span>
             </div>
             <div style="margin: 10px 0;">
-              <span class="user-password">Password: </span>
-              <input type="password" v-model="user.password"></input>
-            </div>
-            <div>
-                <span class="user-role">You are a: </span>
-                <select v-model="selected">
-                    <option v-for="option in options" v-bind:value="option.value">
-                        {{ option.text }}
-                    </option>
-                </select>
+              <span class="user-password">Phone Number: </span>
+              <input type="text" v-model="user.phone_no"></input>
             </div>
         </form>
-        <button type="button" class="button--grey" v-on:click="submitUpdate">Update</button>
+        <button type="button" class="button--grey" v-on:click="submitUpdate">Update Phone #</button>
+        <nuxt-link class="button--grey" style="padding: 5px 20px; text-decoration: none;" :to="{ path: `/users/${user.email}`, params: { email: user.email }}">Back</nuxt-link>
       </div>
     </div>
   </section>
@@ -31,7 +23,7 @@ import axios from '~/plugins/axios'
 
 export default {
   asyncData ({ params, error }) {
-    return axios.get('/api/users/' + params.username)
+    return axios.get('/api/users/customer/' + params.email)
       .then((res) => {
         return { user: res.data }
       })
@@ -55,17 +47,15 @@ export default {
     submitUpdate () {
       let self = this
 
-      axios.post('/api/users/update', {
+      axios.post('/api/users/updatephone', {
         headers:
           {
             'Content-Type': 'application/json'
           },
         data:
           {
-            // userid: self.user.userid,
-            username: self.user.email,
-            password: self.user.password,
-            role: self.selected
+            email: self.user.email,
+            phone_no: self.user.phone_no
           }})
         .then((res) => {
           // res.data should contain the url for redirecting... bad practice

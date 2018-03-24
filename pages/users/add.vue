@@ -4,23 +4,28 @@
     <div class="subsection">
     <form style="margin: 15px 15px;">
       <div style="margin: 10px 0;">
-        <span class="user-username">Email: </span>
-        <input type="text" :value="username" v-model="username"></input>
+        <span class="user-email">Email*: </span>
+        <input type="text" :value="email" v-model="email"></input>
       </div>
       <div style="margin: 10px 0;">
-        <span class="user-password">Password: </span>
+        <span class="user-password">Password*: </span>
         <input type="password" v-model="password"></input>
       </div>
-      <div>
-        <span class="user-role">You are a: </span>
-        <select v-model="selected">
-          <option v-for="role in roles" v-bind:value="role.value">
-            {{ role.text }}
-          </option>
-        </select>
+      <div style="margin: 10px 0;">
+        <span class="user-password">First Name*: </span>
+        <input type="text" v-model="first_name"></input>
       </div>
+      <div style="margin: 10px 0;">
+        <span class="user-password">Last Name*: </span>
+        <input type="text" v-model="last_name"></input>
+      </div>
+      <div style="margin: 10px 0;">
+        <span class="user-password">Phone # (Optional): </span>
+        <input type="text" v-model="phone_no"></input>
+      </div>
+
     </form>
-    <button type="button" class="button--grey" @click="submitInsert">Add User</button>
+    <button type="button" class="button--grey" @click="createCustomer">Create Customer Account</button>
     </div>
   </div>
   </section>
@@ -32,41 +37,40 @@ import axios from '~/plugins/axios'
 export default {
   data () {
     return {
-      userid: '',
-      username: '',
+      email: '',
       password: '',
-      selected: '0',
-      roles: [
-        { text: 'Customer', value: '0' },
-        { text: 'Employee', value: '1' },
-        { text: 'Admin', value: '2' }
-      ]
+      first_name: '',
+      last_name: '',
+      phone_no: ''
     }
   },
 
   methods: {
-    submitInsert () {
+    createCustomer () {
       let self = this
 
-      axios.post('/api/users/add', {
-        headers:
-          {
-            'Content-Type': 'application/json'
-          },
-        data:
-          {
-            userid: self.userid,
-            username: self.username,
-            password: self.password,
-            role: self.selected
-          }})
-        .then((res) => {
-          // res.data should contain the url for redirecting... bad practice
-          self.$nuxt.$router.replace({ path: res.data })
-        })
-        .catch((e) => {
-          console.log(e)
-        })
+      if (self.email && self.password && self.first_name && self.last_name) {
+        axios.post('/api/users/add', {
+          headers:
+            {
+              'Content-Type': 'application/json'
+            },
+          data:
+            {
+              email: self.email,
+              password: self.password,
+              first_name: self.first_name,
+              last_name: self.last_name,
+              phone_no: self.phone_no
+            }})
+          .then((res) => {
+            // res.data should contain the url for redirecting... bad practice
+            self.$nuxt.$router.replace({ path: res.data })
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+      } else alert('Please fill in all required fields (*)')
     }
   },
 
@@ -98,7 +102,7 @@ export default {
     margin 25px 10px
     font-size 26px
     font-weight 500
-  .user-username
+  .user-email
     font-size 24px
     font-weight 500
     color #707070
