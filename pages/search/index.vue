@@ -4,6 +4,7 @@
       <div class='subsection'>
         <div style='margin: 25px 10px;'>
           <span class='subsection-title' style='vertical-align: middle;'>What are you looking for? Fill in the ones that apply.</span>
+          <nuxt-link class='button--grey' style='margin-left: 10px;' :to="{ path: `/` }">Back to main</nuxt-link>
         </div>
         <div style='margin: 10px 0;'>
           <span class='landsat_takesoff_flight-flightno'>Flight No: </span>
@@ -51,19 +52,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for='row in rows'>
+              <tr v-for='(row, index) in rows'>
                 <td v-for='col in columns'>{{row[col]}}</td>
+                <td>
+                  <nuxt-link :to="{ path: `search/open-seats`,
+                    query: { flightno: searched[index].flight_no.trim(), airline: searched[index].airline.trim(), date: searched[index].date.trim() }}">
+                    View seats
+                  </nuxt-link>
+                </td>
                 <br>
-              </tr>
-              <tr v-for="search in searched">
-                <nuxt-link :to="{ path: `search/${ search.flight_no.trim() }/${ search.airline.trim() }/${ search.date.trim() }`, }">
-                  View seats
-                </nuxt-link>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+    </div>
+    <div>
+      Not what you were looking for? Click <nuxt-link :to="{ path: `search/additional` }">here</nuxt-link> for additional searches.
     </div>
   </section>
 </template>
@@ -85,14 +90,7 @@ export default {
       rows: [],
       columns: [],
       queryParams: {},
-      searched: [],
-      i: 0
-    }
-  },
-
-  computed: {
-    link: function () {
-      return this.i++
+      searched: []
     }
   },
 
@@ -125,10 +123,13 @@ export default {
           colsSelected: self.colsSelected
         }
       }).then((res) => {
+        if (res.data.length === 0) {
+          alert('No results found!')
+        }
         self.rows = res.data
         self.columns = Object.keys(self.rows[0])
       }).catch((e) => {
-        alert(e) // TODO - what to do with empty result?
+        alert(e.response.data)
       })
 
       axios.post('/api/search/flights', {
@@ -142,8 +143,14 @@ export default {
       }).then((res) => {
         self.searched = res.data
       }).catch((e) => {
-        alert(e)
+        // error will be displayed from first POST request
       })
+    }
+  },
+
+  head () {
+    return {
+      title: 'Search flights'
     }
   }
 }
