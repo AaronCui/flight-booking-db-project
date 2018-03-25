@@ -49,6 +49,12 @@ INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
 VALUES(1234, '520', 'AC', '2018-05-20', 'BOEING777');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
+VALUES(1234, '521', 'AC', '2018-05-21', 'BOEING777');
+
+INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
+VALUES(1234, '522', 'AC', '2018-05-22', 'BOEING777');
+
+INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
 VALUES(9000, '099', 'UA', '2018-05-21', 'BOEING787');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
@@ -170,32 +176,32 @@ INSERT INTO Staff (email, sin, level)
 VALUES ('smithLazy@airplaneUsers.com', 987654321, 2);
 
 -- LANDSAT_TAKESOFF_FLIGHT
-INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
-VALUES ('520', 'AC', '2018-05-20', 1234, 'YVR', 'SFO');
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('520', 'AC', '2018-05-20', 'YVR', 'SFO');
 
-INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
-VALUES ('520', 'AC', '2018-05-21', 1234, 'SFO', 'YVR');
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('521', 'AC', '2018-05-21', 'SFO', 'YVR');
 
-INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
-VALUES ('520', 'AC', '2018-05-22', 1234, 'YVR', 'SFO');
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('522', 'AC', '2018-05-22', 'YVR', 'SFO');
 
-INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
-VALUES ('099', 'UA', '2018-05-21', 9000, 'SFO', 'YYZ');
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('099', 'UA', '2018-05-21', 'SFO', 'YYZ');
 
-INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
-VALUES ('100', 'DL', '2018-05-26', 9001, 'YVR', 'YYZ');
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('100', 'DL', '2018-05-26', 'YVR', 'YYZ');
 
-INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
-VALUES ('092', 'CA', '2018-05-21', 1023, 'SFO', 'YVR');
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('092', 'CA', '2018-05-21', 'SFO', 'YVR');
 
-INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
-VALUES ('084', 'JP', '2018-06-02', 5048, 'LAX', 'NRT');
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('084', 'JP', '2018-06-02', 'LAX', 'NRT');
 
-INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
-VALUES ('022', 'AA', '2018-02-16', 9765, 'HNL', 'JFK');
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('022', 'AA', '2018-02-16', 'HNL', 'JFK');
 
-INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, plane_id, landsAt_airport, takesOff_airport)
-VALUES ('554', 'CX', '2018-02-16', 2458, 'SIN', 'HKG');
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('554', 'CX', '2018-02-16', 'SIN', 'HKG');
 
 -- HAS_SEATS TABLES
 INSERT INTO Has_Seats_1 (seat_no, seat_class)
@@ -328,22 +334,22 @@ INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
 VALUES('economy', '520', 'AC', '2018-05-20', 25000);
 
 INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
-VALUES('first', '520', 'AC', '2018-05-21', 90000);
+VALUES('first', '521', 'AC', '2018-05-21', 90000);
 
 INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
-VALUES('business', '520', 'AC', '2018-05-21', 40000);
+VALUES('business', '521', 'AC', '2018-05-21', 40000);
 
 INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
-VALUES('economy', '520', 'AC', '2018-05-21', 20000);
+VALUES('economy', '521', 'AC', '2018-05-21', 20000);
 
 INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
-VALUES('first', '520', 'AC', '2018-05-22', 110000);
+VALUES('first', '522', 'AC', '2018-05-22', 110000);
 
 INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
-VALUES('business', '520', 'AC', '2018-05-22', 60000);
+VALUES('business', '522', 'AC', '2018-05-22', 60000);
 
 INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
-VALUES('economy', '520', 'AC', '2018-05-22', 35000);
+VALUES('economy', '522', 'AC', '2018-05-22', 35000);
 
 INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
 VALUES('first', '099', 'UA', '2018-05-21', 200000);

@@ -41,7 +41,7 @@ CREATE TABLE Airplane_4 (
   airline		CHAR(5),
   date		  DATE,
   model		  CHAR(20),
-  PRIMARY KEY (plane_id)
+  PRIMARY KEY (flight_no, airline, date)
 );
 
 CREATE TABLE Airport (
@@ -57,12 +57,11 @@ CREATE TABLE LandsAt_TakesOff_Flight (
   flight_no	        CHAR(5),
   airline		        CHAR(5),
   date		          DATE,
-  plane_id	        INTEGER,
   landsAt_airport	  CHAR(5),
   takesOff_airport	CHAR(5),
   PRIMARY KEY (flight_no, airline, date),
-  FOREIGN KEY (plane_id)
-    REFERENCES Airplane_4 (plane_id),
+  FOREIGN KEY (flight_no, airline, date)
+    REFERENCES Airplane_4 (flight_no, airline, date),
   FOREIGN KEY (landsAt_airport)
     REFERENCES Airport (code),
   FOREIGN KEY (takesOff_airport)
