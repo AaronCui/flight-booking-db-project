@@ -95,5 +95,40 @@ router.get('/search/aggregation', function (req, res, next) {
   })
 })
 
+/* display flights and seat search results */
+router.post('/search/additional/lookup', bodyParser.json(), function (req, res, next) {
+  console.log('Additional search for flights and seats...');
+  const queryParams = req.body.data.queryParams;
+
+  let seat_price_upper = req.body.data.seat_price_upper;
+  const seat_price_lower = req.body.data.seat_price_lower * 100;
+  let upper_price_string = '';
+  if (seat_price_upper !== '') {
+    seat_price_upper *= 100;
+    upper_price_string = `AND seat_price <= ${seat_price_upper}`;
+  }
+
+  const where = Object.keys(queryParams).map(function (x) {return x + ' = ' + queryParams[x]}).join(' AND ');
+  const connector = where === '' ? '' : ' AND ';
+  const query =
+    'SELECT flight_no, airline, date, seat_no, seat_class, seat_price ' +
+    'FROM LandsAt_TakesOff_Flight NATURAL JOIN Has_Seats_1 NATURAL JOIN Has_Seats_4 NATURAL JOIN Has_Seats_3 HS3 ' +
+    'WHERE reserved = 0 AND ' +
+      where + connector +
+      `seat_price >= ${seat_price_lower}` +
+      upper_price_string + ';';
+
+  connection.query(query, {
+    type: connection.QueryTypes.SELECT,
+  })
+    .then((result) => {
+      console.log(result);
+      res.json(result);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(400).send(e.message);
+    })
+})
 
 export default router
