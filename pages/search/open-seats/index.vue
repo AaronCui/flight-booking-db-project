@@ -18,7 +18,7 @@
               <tr v-for='(seat, index) in seats'>
                 <td >{{ seat.seat_no }}</td>
                 <td >{{ seat.seat_class }}</td>
-                <td >{{ (seat.seat_price / 100).toFixed(2) }}</td>
+                <td >{{ seat.seat_price }}</td>
                 <td >
                   <nuxt-link :to="{ path: `/book`,
                     query: { seat_no: seat.seat_no.trim(), flight_no: flightno, airline: airline, date: date}}">
@@ -93,7 +93,7 @@ export default {
           params: { flightno: self.$route.query.flightno, airline: self.$route.query.airline, date: self.$route.query.date, aggregator: self.selected }
         })
           .then((res) => {
-            self.value = (res.data / 100).toFixed(2)
+            self.value = res.data
           })
           .catch((e) => {
             alert(e)

@@ -6,7 +6,7 @@
           <span class='subsection-title' style='vertical-align: middle;'>Booking Confirmation: Please fill in the following details.</span>
         </div>
         <div style='margin: 10px 0;'>
-          <span class='confirm-email'>Reservation ID: </span>
+          <span class='confirm-reservation-id'>Reservation ID: </span>
           <input type='text' v-model='reservationID'></input>
         </div>
         <div style='margin: 10px 0;'>

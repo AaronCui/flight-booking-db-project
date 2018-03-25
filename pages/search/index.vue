@@ -68,7 +68,7 @@
       </div>
     </div>
     <div>
-      Not what you were looking for? Click <nuxt-link :to="{ path: `search/additional` }">here</nuxt-link> for additional searches.
+      Not what you were looking for? Click <nuxt-link :to="{ path: `search/additional` }"><b>here</b></nuxt-link> for additional searches.
     </div>
   </section>
 </template>
