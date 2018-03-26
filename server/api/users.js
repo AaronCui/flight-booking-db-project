@@ -3,7 +3,7 @@ var connection = require('../configs/sequelize')
 const bodyParser = require('body-parser')
 
 const router = Router()
-const roles=['Customer', 'Staff', 'Admin']
+const access_levels=['Customer', 'Staff', 'Admin']
 
 /* GET users listing. */
 router.get('/users', function (req, res, next) {
@@ -21,7 +21,7 @@ router.post('/users/auth', bodyParser.json(), function (req, res, next) {
   console.log ("Validating Login for:" + req.body.email);
   const email = req.body.email
   const password = req.body.password
-  const query = 'SELECT password, role FROM Users WHERE email = :email and password = :password;'
+  const query = 'SELECT password, access_level FROM Users WHERE email = :email and password = :password;'
   connection.query(query,
     {
       type: connection.QueryTypes.SELECT,
@@ -34,7 +34,7 @@ router.post('/users/auth', bodyParser.json(), function (req, res, next) {
       if (result.length != 1)
         res.status(404).json({})  //assert that 1 user was found
       if (result[0].password == password){
-        res.send('/users/' + roles[result[0].role])
+        res.send('/users/' + access_levels[result[0].access_level])
       }
     })
 })
@@ -61,10 +61,9 @@ router.get('/users/:username', function (req, res, next) {
 
 router.post('/users/update', bodyParser.json(), function (req, res, next) {
   console.log(req.body.data)
-  // const userid = req.body.data.userid
   const username = req.body.data.username
   const password = req.body.data.password
-  const role = req.body.data.role
+  const access_level = req.body.data.access_level
 
   const query = 'UPDATE Users SET password = :password, role = :role WHERE email = :username ;'
   connection.query(query,
@@ -73,7 +72,7 @@ router.post('/users/update', bodyParser.json(), function (req, res, next) {
       replacements: {
         username: username,
         password: password,
-        role: role
+        access_level: access_level
       }
     })
     .then(result => {
@@ -83,19 +82,18 @@ router.post('/users/update', bodyParser.json(), function (req, res, next) {
 })
 
 router.post('/users/add', bodyParser.json(), function (req, res, next) {
-  const userid = req.body.data.userid
   const username = req.body.data.username
   const password = req.body.data.password
-  const role = req.body.data.role
+  const access_level = req.body.data.access_level
 
-  const query = 'INSERT INTO Users (email, password, role) VALUES (:username, :password, :role) ;'
+  const query = 'INSERT INTO Users (email, password, access_level) VALUES (:username, :password, :access_level) ;'
   connection.query(query,
     {
       type: connection.QueryTypes.INSERT,
       replacements: {
         username: username,
         password: password,
-        role: role
+        access_level: access_level
       }
     })
     .then(result => {

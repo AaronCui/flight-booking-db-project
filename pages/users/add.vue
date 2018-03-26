@@ -58,7 +58,7 @@ export default {
             userid: self.userid,
             username: self.username,
             password: self.password,
-            role: self.selected
+            access_level: self.selected
           }})
         .then((res) => {
           // res.data should contain the url for redirecting... bad practice
