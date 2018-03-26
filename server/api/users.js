@@ -3,12 +3,12 @@ var connection = require('../configs/sequelize')
 const bodyParser = require('body-parser')
 
 const router = Router()
-const roles=['customer', 'staff']
+const access_levels=['customer', 'staff']
 
 /* GET users listing. */
 router.get('/users', function (req, res, next) {
   console.log ("Retrieving users...");
-  const query = 'SELECT * FROM users; '
+  const query = 'SELECT * FROM users;'
   connection.query(query, { type: connection.QueryTypes.SELECT })
     .then(users => {
       console.log(users)
