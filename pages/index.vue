@@ -13,9 +13,10 @@
         <span class="user-password">Password: </span>
         <input type="password" v-model="password"></input>
       </div>
-      <div class="links">
+      <div class="links" style="padding:10px;">
         <button type="button" class="button--grey" style="margin-left: 15px;" @click="login()">Login</button>
       </div>
+      <nuxt-link class="button--grey" style="padding: 5px 20px; text-decoration: none;" to="/users/add">Add User</nuxt-link>
     </div>
   </section>
 </template>
@@ -38,15 +39,18 @@ export default {
       console.log(self.email)
       console.log(self.password)
 
-      axios.post('/api/users/auth', {email: self.email, password: self.password})
-        .then((res) => {
-          // res.data should contain the url for redirecting... bad practice
-          self.$nuxt.$router.replace({ path: res.data })
-        })
-        .catch((e) => {
-          console.log(e)
-          alert('Incorrect username/password')
-        })
+      if (self.email && self.password) {
+        axios.post('/api/users/auth', {email: self.email, password: self.password})
+          .then((res) => {
+            // res.data should contain the url for redirecting... bad practice
+            console.log(res.data)
+            self.$nuxt.$router.replace({path: res.data})
+          })
+          .catch((e) => {
+            console.log(e)
+            alert('Incorrect email/password')
+          })
+      } else alert('Please enter both email and password')
     }
   },
 
