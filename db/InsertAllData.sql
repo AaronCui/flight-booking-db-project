@@ -809,7 +809,7 @@ INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('D06','084', 'JP', '2018-06-02', 0);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
-VALUES ('D19','084', 'JP', '2018-06-02', 0);
+VALUES ('D19','084', 'JP', '2018-06-02', 1);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('E12','084', 'JP', '2018-06-02', 0);
@@ -882,10 +882,10 @@ INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('J01','022', 'AA', '2018-02-16', 0);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
-VALUES ('J10','022', 'AA', '2018-02-16', 0);
+VALUES ('J10','022', 'AA', '2018-02-16', 1);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
-VALUES ('J11','022', 'AA', '2018-02-16', 0);
+VALUES ('J11','022', 'AA', '2018-02-16', 1);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('K10','022', 'AA', '2018-02-16', 0);
