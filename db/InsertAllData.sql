@@ -1000,6 +1000,9 @@ INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
 VALUES('123456', 'YKK49');
 
 INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
+VALUES('123456', 'UJN11');
+
+INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
 VALUES('123457', 'ABX22');
 
 INSERT INTO Reserves_Promotion_Item (reservation_id, promotion_id)
