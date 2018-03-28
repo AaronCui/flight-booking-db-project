@@ -41,7 +41,7 @@
                     <tr v-for='(row, index) in rows'>
                         <td v-for='col in columns'>{{row[col]}}</td>
                         <td >
-                            <nuxt-link :to="{ path: `/book`,
+                            <nuxt-link class='button--grey' :to="{ path: `../${email}/book`,
                   query: { seat_no: row.seat_no.trim(), flight_no: row.flight_no.trim(), airline: row.airline.trim(), date: row.date.trim() }}">
                                 Book
                             </nuxt-link>
