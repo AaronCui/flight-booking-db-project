@@ -18,7 +18,7 @@
               <tr v-for='(seat, index) in seats'>
                 <td >{{ seat.seat_no }}</td>
                 <td >{{ seat.seat_class }}</td>
-                <td >{{ seat.seat_price }}</td>
+                <td >{{ parseFloat(seat.seat_price)/100 }}</td>
                 <td >
                   <nuxt-link :to="{ path: `/book`,
                     query: { seat_no: seat.seat_no.trim(), flight_no: flightno, airline: airline, date: date}}">
