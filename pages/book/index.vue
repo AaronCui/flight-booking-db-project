@@ -66,9 +66,9 @@ export default {
   methods: {
     book () {
       let self = this
-      let status
+      // let status
 
-      axios.post(`api/book/confirm`, {
+      axios.post(`/api/book/confirm`, {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -84,33 +84,29 @@ export default {
         }
       })
         .then((res) => {
-          alert(res.response.data)
-          status = res.statusCode
+          alert(res.data)
+          axios.post(`/api/book/update-seat`, {
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: {
+              flight_no: self.query.flight_no,
+              airline: self.query.airline,
+              date: self.query.date,
+              seat_no: self.query.seat_no
+            }
+          })
+            .then((res) => {
+              alert(res.data)
+            })
+            .catch((e) => {
+              alert(e.response)
+            })
         })
         .catch((e) => {
-          alert(e.response.data)
-          status = e.statusCode
+          alert(e.response)
+          // status = e.statusCode
         })
-
-      if (status === 200) {
-        axios.post(`api/book/update-seat`, {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          data: {
-            flight_no: self.query.flight_no,
-            airline: self.query.airline,
-            date: self.query.date,
-            seat_no: self.query.seat_no
-          }
-        })
-          .then((res) => {
-            alert(res.response.data)
-          })
-          .catch((e) => {
-            alert(e.response.data)
-          })
-      }
     }
   },
 

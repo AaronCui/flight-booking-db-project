@@ -7,7 +7,7 @@ const access_levels=['customer', 'staff']
 
 /* GET users listing. */
 router.get('/users', function (req, res, next) {
-  console.log ("Retrieving users...");
+  console.log ("Retrieving users...")
   const query = 'SELECT * FROM users;'
   connection.query(query, { type: connection.QueryTypes.SELECT })
     .then(users => {
@@ -18,7 +18,7 @@ router.get('/users', function (req, res, next) {
 
 /* Authenticate USER login. */
 router.post('/users/auth', bodyParser.json(), function (req, res, next) {
-  console.log ("Validating Login for:" + req.body.email);
+  console.log ("Validating Login for:" + req.body.email)
   const email = req.body.email
   const password = req.body.password
   const query = 'SELECT password, access_level FROM Users WHERE email = :email and password = :password;'
@@ -31,10 +31,11 @@ router.post('/users/auth', bodyParser.json(), function (req, res, next) {
       }
     })
     .then(result => {
-      if (result.length != 1)
-        res.status(404).json({})  //assert that 1 user was found
-      if (result[0].password == password){
-        res.send('/users/' +  email)
+      if (result.length !== 1) {
+        res.status(404).json({}) // assert that 1 user was found
+      }
+      if (result[0].password === password) {
+        res.send('/users/' + email)
       }
     })
 })
@@ -58,7 +59,6 @@ router.get('/users/:email', function (req, res, next) {
       }
     })
 })
-
 
 router.get('/users/customer/:email', function (req, res, next) {
   const email = req.params.email
@@ -119,7 +119,7 @@ router.post('/users/updatephone', bodyParser.json(), function (req, res, next) {
     })
 })
 
-//For users of type **CUSTOMER**
+// For users of type **CUSTOMER**
 router.post('/users/add', bodyParser.json(), function (req, res, next) {
   const email = req.body.data.email
   const password = req.body.data.password
@@ -140,7 +140,7 @@ router.post('/users/add', bodyParser.json(), function (req, res, next) {
         phone_no:phone_no,
         access_level:access_level
       }
-  })
+    })
   const queryCustomer = 'INSERT INTO Customer (email, phone_no, freq_flyer_miles ) VALUES(:email, :phone_no, 0);'
   connection.query(queryCustomer,
     {

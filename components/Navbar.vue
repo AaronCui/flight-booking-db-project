@@ -2,13 +2,13 @@
   <div class="header">
     <div class="inner">
       <nav class="navbar__menu">
-        <router-link to="/" exact>
+
+        <router-link to="/users/"  exact>
           <img class="logo" src="~/assets/img/happy.png" alt="logo">
         </router-link>
-        <nuxt-link to="/users">Users</nuxt-link>
         <nuxt-link to="/search">Search</nuxt-link>
         <nuxt-link to="/analytics">Analytics</nuxt-link>
-        <a class="github" href="https://github.com/belinghy/cpsc304" target="_blank" rel="noopener">
+        <a class="github" href="https://github.com/AaronCui/flight-booking-db-project" target="_blank" rel="noopener">
           Github
         </a>
       </nav>

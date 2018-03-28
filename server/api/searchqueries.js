@@ -86,13 +86,13 @@ router.get('/search/aggregation', function (req, res, next) {
       date: date
     }
   })
-  .then(result => {
-    res.json(Object.values(result[0])[0])
-  })
-  .catch(e => {
-    console.log(e)
-    res.status(400).send(e.message)
-  })
+    .then(result => {
+      res.json(Object.values(result[0])[0])
+    })
+    .catch(e => {
+      console.log(e)
+      res.status(400).send(e.message)
+    })
 })
 
 /* display flights and seat search results */
@@ -114,9 +114,9 @@ router.post('/search/additional/lookup', bodyParser.json(), function (req, res, 
     'SELECT flight_no, airline, date, seat_no, seat_class, seat_price ' +
     'FROM LandsAt_TakesOff_Flight NATURAL JOIN Has_Seats_1 NATURAL JOIN Has_Seats_4 NATURAL JOIN Has_Seats_3 HS3 ' +
     'WHERE reserved = 0 AND ' +
-      where + connector +
-      `seat_price >= ${seat_price_lower}` +
-      upper_price_string + ';';
+    where + connector +
+    `seat_price >= ${seat_price_lower}` +
+    upper_price_string + ';';
 
   connection.query(query, {
     type: connection.QueryTypes.SELECT,

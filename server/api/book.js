@@ -6,7 +6,10 @@ const router = Router()
 
 router.post('/book/confirm', bodyParser.json(), function (req, res, next) {
   console.log('Booking flight...');
-  const reservation_id = req.body.data.reservation_id;
+  const d = new Date()
+  // ideally we'd add more specific data like user email to avoid collision, but it gets too long, need to change db
+  // Or simply use a library for UUID generator
+  const reservation_id = d.getDate() + d.getMinutes() + d.getSeconds() + d.getMilliseconds()
   const email = req.body.data.email;
   const seat_no = req.body.data.seat_no;
   const flight_no = req.body.data.flight_no;
@@ -31,14 +34,14 @@ router.post('/book/confirm', bodyParser.json(), function (req, res, next) {
       meal_pref: mealpref
     }
   })
-  .then((result) => {
-    console.log(result);
-    res.status(200).send('Booking successful!')
-  })
-  .catch((e) => {
-    console.log(e);
-    res.status(400).send('Unable to book your seat. Please try again.');
-  })
+    .then((result) => {
+      console.log(result);
+      res.send('Booking successful!')
+    })
+    .catch((e) => {
+      console.log(e);
+      res.send('Unable to book your seat. Please try again.');
+    })
 })
 
 router.post('/book/update-seat', bodyParser.json(), function (req, res, next) {
@@ -61,15 +64,14 @@ router.post('/book/update-seat', bodyParser.json(), function (req, res, next) {
       seat_no: seat_no
     }
   })
-  .then((result) => {
-    console.log(result);
-    res.status(200).send('Seat reservation successful!')
-  })
-  .catch((e) => {
-    console.log(e);
-    res.status(400).send('Unable to reserve your seat. Please try again.')
-  })
+    .then((result) => {
+      console.log(result);
+      res.send('Seat reservation successful!')
+    })
+    .catch((e) => {
+      console.log(e);
+      res.send('Unable to reserve your seat. Please try again.')
+    })
 })
-
 
 export default router

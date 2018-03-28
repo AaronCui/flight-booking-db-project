@@ -8,7 +8,7 @@
             </div>
             <div style="margin: 10px 0;">
               <span class="user-password">Phone Number: </span>
-              <input type="text" v-model="user.phone_no"></input>
+              <input type="text" v-model="user.phone_no"/>
             </div>
         </form>
         <button type="button" class="button--grey" v-on:click="submitUpdate">Update Phone #</button>

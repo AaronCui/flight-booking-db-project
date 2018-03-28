@@ -7,14 +7,14 @@
       </h1>
       <div style="margin: 10px 0;">
         <span class="user-email">Email: </span>
-        <input type="text" :value="email" v-model="email"></input>
+        <input type="text" :value="email" v-model="email"/>
       </div>
-      <div style="margin: 8px 0;">
+      <div style="margin: 10px 0;">
         <span class="user-password">Password: </span>
-        <input type="password" v-model="password"></input>
+        <input type="password" v-model="password"/>
       </div>
-      <div class="links" style="padding:10px;">
-        <button type="button" class="button--grey" style="margin-left: 15px;" @click="login()">Login</button>
+      <div class="links">
+        <button type="button" style="padding: 10px 20px; text-decoration: none;" @click="login()">Login</button>
       </div>
       <nuxt-link class="button--grey" style="padding: 5px 20px; text-decoration: none;" to="/users/add">Add User</nuxt-link>
     </div>
@@ -44,7 +44,10 @@ export default {
           .then((res) => {
             // res.data should contain the url for redirecting... bad practice
             console.log(res.data)
+            // this.$store.email = self.email
             self.$nuxt.$router.replace({path: res.data})
+
+            // self.$nuxt.$router.replace({path: '/main/' + res.data})
           })
           .catch((e) => {
             console.log(e)
@@ -94,7 +97,8 @@ export default {
   padding-bottom 15px
 
 .links
-  padding-top 15px
+  padding-top 10px
+  padding-bottom 15px
 
 @media (max-width 860px)
   .title

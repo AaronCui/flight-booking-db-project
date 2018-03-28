@@ -5,23 +5,23 @@
     <form style="margin: 15px 15px;">
       <div style="margin: 10px 0;">
         <span class="user-email">Email*: </span>
-        <input type="text" :value="email" v-model="email"></input>
+        <input type="text" :value="email" v-model="email"/>
       </div>
       <div style="margin: 10px 0;">
         <span class="user-password">Password*: </span>
-        <input type="password" v-model="password"></input>
+        <input type="password" v-model="password"/>
       </div>
       <div style="margin: 10px 0;">
         <span class="user-password">First Name*: </span>
-        <input type="text" v-model="first_name"></input>
+        <input type="text" v-model="first_name"/>
       </div>
       <div style="margin: 10px 0;">
         <span class="user-password">Last Name*: </span>
-        <input type="text" v-model="last_name"></input>
+        <input type="text" v-model="last_name"/>
       </div>
       <div style="margin: 10px 0;">
         <span class="user-password">Phone # (Optional): </span>
-        <input type="text" v-model="phone_no"></input>
+        <input type="text" v-model="phone_no"/>
       </div>
 
     </form>
