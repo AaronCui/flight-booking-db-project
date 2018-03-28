@@ -3,7 +3,7 @@
     <div class="content">
       <div class="subsection">
         <div style="margin: 25px 10px;">
-          <div class="user-username" style="padding: 10px 0 10px 10px; margin: 10px 0 10px 0;">Hello "{{ user.email }}"!</div>
+          <div class="user-username" style="padding: 10px 0 10px 10px; margin: 10px 0 10px 0;">Hello {{ user.first_name }} {{user.last_name}}!</div>
           <div class="user-password" style="padding: 0 0 0 10px; margin: 10px 0 10px 0;">Your Password: {{ user.password }}</div>
           <div style="padding: 0 0 0 10px; margin: 10px 0 10px 0;">Your Role: Customer</div>
           <div class="container">
@@ -12,7 +12,13 @@
                 <nuxt-link class="button--grey" :to="{ path: `/users/${user.email}/updatephone`, params: { email: user.email }}">Update Phone Number</nuxt-link>
               </li>
               <li style="padding: 10px 5px; position: relative;">
-                <nuxt-link class="button--grey" to="/">Flights (** NOT ROUTED)</nuxt-link>
+                <nuxt-link class="button--grey" :to="{ path: `/users/${user.email}/search`, params: { email: user.email }}">Search For Flights</nuxt-link>
+              </li>
+              <li style="padding: 10px 5px; position: relative;">
+                <nuxt-link class="button--grey" :to="{ path: `/users/${user.email}/reservations`, params: { email:user.email }}">Reservations</nuxt-link>
+              </li>
+              <li style="padding: 10px 5px; position: relative;">
+                <nuxt-link class="button--grey" to="/">Log Out</nuxt-link>
               </li>
             </ul>
           </div>
@@ -26,7 +32,6 @@
 import axios from '~/plugins/axios'
 
 export default {
-  name: 'email',
   asyncData ({ params, error }) {
     return axios.get('/api/users/' + params.email)
       .then((res) => {
