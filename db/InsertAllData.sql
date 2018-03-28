@@ -55,6 +55,12 @@ INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
 VALUES(1234, '522', 'AC', '2018-05-22', 'BOEING777');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
+VALUES(1234, '523', 'AC', '2018-05-23', 'BOEING777');
+
+INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
+VALUES(1234, '524', 'AC', '2018-05-24', 'BOEING777');
+
+INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
 VALUES(9000, '099', 'UA', '2018-05-21', 'BOEING787');
 
 INSERT INTO Airplane_4(plane_id, flight_no, airline, date, model)
@@ -184,6 +190,12 @@ VALUES ('521', 'AC', '2018-05-21', 'SFO', 'YVR');
 
 INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
 VALUES ('522', 'AC', '2018-05-22', 'YVR', 'SFO');
+
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('523', 'AC', '2018-05-23', 'YVR', 'SFO');
+
+INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
+VALUES ('524', 'AC', '2018-05-24', 'YVR', 'SFO');
 
 INSERT INTO LandsAt_TakesOff_Flight (flight_no, airline, date, landsAt_airport, takesOff_airport)
 VALUES ('099', 'UA', '2018-05-21', 'SFO', 'YYZ');
@@ -350,6 +362,24 @@ VALUES('business', '522', 'AC', '2018-05-22', 60000);
 
 INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
 VALUES('economy', '522', 'AC', '2018-05-22', 35000);
+
+INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
+VALUES('first', '523', 'AC', '2018-05-23', 99999999);
+
+INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
+VALUES('business', '523', 'AC', '2018-05-23', 88888888);
+
+INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
+VALUES('economy', '523', 'AC', '2018-05-23', 77777777);
+
+INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
+VALUES('first', '524', 'AC', '2018-05-24', 30000);
+
+INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
+VALUES('business', '524', 'AC', '2018-05-24', 20000);
+
+INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
+VALUES('economy', '524', 'AC', '2018-05-24', 10000);
 
 INSERT INTO Has_Seats_3 (seat_class, flight_no, airline, date, seat_price)
 VALUES('first', '099', 'UA', '2018-05-21', 200000);
@@ -587,6 +617,128 @@ VALUES ('K10','522', 'AC', '2018-05-22', 0);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('L01','522', 'AC', '2018-05-22', 0);
+
+-- 523 AC 2018-05-23
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A01','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A02','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A03','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A04','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A05','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A06','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A07','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('B09','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('B14','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('C02','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('C11','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('D06','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('D19','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('E12','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('H07','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('J01','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('J10','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('J11','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('K10','523', 'AC', '2018-05-23', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('L01','523', 'AC', '2018-05-23', 0);
+
+-- 524 AC 2018-05-24
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A01','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A02','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A03','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A04','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A05','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A06','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('A07','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('B09','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('B14','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('C02','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('C11','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('D06','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('D19','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('E12','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('H07','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('J01','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('J10','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('J11','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('K10','524', 'AC', '2018-05-24', 0);
+
+INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
+VALUES ('L01','524', 'AC', '2018-05-24', 0);
 
 -- 099 UA 2018-05-21
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
