@@ -112,7 +112,7 @@ CREATE TABLE Customer (
   PRIMARY KEY (email),
   FOREIGN KEY (email)
     REFERENCES Users(email)
-	ON DELETE CASCADE
+	  ON DELETE CASCADE
 );
 
 

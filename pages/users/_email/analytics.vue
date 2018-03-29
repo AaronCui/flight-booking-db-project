@@ -144,7 +144,6 @@
         </div>
 
         <div>
-            <nuxt-link class='button--grey' style='margin-top: 20px; margin-left: 10px; margin-bottom: 30px;' :to="{ path: `/users/${user.email}/search`, params: { email: user.email }}">Back To Flight Search</nuxt-link>
             <nuxt-link class='button--grey' style='margin-top: 20px; margin-left: 10px; margin-bottom: 30px;' :to="{ path: `/users/${user.email}`, params: { email: user.email }}">Back To Main Page</nuxt-link>
         </div>
         <br>

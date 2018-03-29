@@ -1,41 +1,25 @@
 <template>
-    <section class='confirm-booking'>
-        <div class='content'>
-            <div class='subsection'>
-                <div style='margin: 25px 10px;'>
-                    <span class='subsection-title' style='vertical-align: middle;'>Your reservations are as following</span>
+    <section class="reservations-view">
+        <div class="content">
+            <div class="subsection">
+                <div style="margin: 25px 10px;">
+                    <span class="subsection-title" style="vertical-align: middle;">Reservations</span>
                 </div>
-                <div style='margin: 10px 0;'>
-                    <span class='confirm-email'>Your email is : {{user.email}}</span>
+                <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <li v-for="(reservation, index) in reservations" :key="index" style="padding: 10px 20px; margin: 0 25px; position: relative;">
+                        <div>Reservation # :"{{ reservation.reservation_id }}"</div>
+                        <div>
+                            <span style="color:green;">Route: {{ reservation.takesoff_airport }} --> {{ reservation.landsat_airport}}</span>
+                            <span style="color:blue;">Date: {{ reservation.date }}</span>
+                            <button type="button" style="margin-left: 20px; padding: 10px 20px; text-decoration: none;" @click="deleteReservation(reservation.reservation_id, reservation.email)">
+                                Cancel Reservation
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+                <div>
+                    <nuxt-link class='button--grey' style='margin-top: 20px; margin-left: 10px; margin-bottom: 30px;' :to="{ path: `/users/${email}`, params: { email: email }}">Back To Main Page</nuxt-link>
                 </div>
-                <br>
-                <nuxt-link v-if="user.access_level === 0" type='button' class='button--grey' style='margin-left: 15px;' :to="{ path: `/users/${user.email}/manageReservations`, params:{ email: user.email }}">
-                    Check and manage my reservations
-                </nuxt-link>
-                <div v-if="user.access_level > 0">
-                    <span>Enter a Customer's email to check his/her reservations: </span>
-                    <input type='text' v-model='customer_email'/>
-                </div>
-            </div>
-            <div style='margin: 8px 0;'>
-                <table id='flight-results'>
-                    <thead>
-                    <tr>
-                        <th v-for='col in columns'>{{col}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for='(row, index) in rows'>
-                        <td v-for='col in columns'>{{row[col]}}</td>
-                        <br>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div>
-                <nuxt-link class='button--grey' style='margin-top: 20px; margin-left: 10px;' :to="{ path: `/users/${user.email}/search`, params: { email: user.email }}">Back To Flight Search</nuxt-link>
-                <nuxt-link class='button--grey' style='margin-top: 20px; margin-left: 10px;' :to="{ path: `/users/${user.email}`, params: { email: user.email }}">Back To Main Page</nuxt-link>
             </div>
         </div>
     </section>
@@ -46,47 +30,44 @@
 
   export default {
     asyncData ({ params, error }) {
-      return axios.get('/api/users/' + params.email)
-        .then((res) => {
-          return { user: res.data }
+      return axios.get('/api/reservations/' + params.email)
+        .then((result) => {
+          return {
+            email: params.email,
+            reservations: result.data
+          }
         })
-    },
-    data () {
-      return {
-        customer_email: '',
-        rows: [],
-        columns: []
-      }
+        .catch((e) => {
+          alert('No reservations to show.')
+          self.$nuxt.$router.replace({ path: `/users/${params.email}` })
+        })
     },
 
     methods: {
-      check () {
-        console.log('here testing method ')
-        axios.get(`/api/reservations/` + this.user.email, {
+      deleteReservation (reservationID, email) {
+        email = email.trim()
+        axios.get(`/api/reservations/cancel/` + reservationID, {
           headers: {
             'Content-Type': 'application/json'
           },
           params: {
-            email: this.user.email
+            reservation_id: reservationID
           }
         })
-          .then((res) => {
-            if (res.data.length === 0) {
-              alert('No results found!')
-            }
-            self.rows = res.data
-            self.columns = Object.keys(self.rows[0])
-            console.log('data on front end is ' + Object.keys(self.rows[0])[0])
+          .then((result) => {
+            alert('Reservation' + reservationID + 'deleted.')
+            console.log(result)
+            self.$nuxt.$router.replace({ path: `/users/${email}` })
           })
           .catch((e) => {
-            alert(e.response.data)
+            alert(e.response)
           })
       }
     },
 
     head () {
       return {
-        title: 'Booking confirmation'
+        title: 'Manage Reservations'
       }
     }
   }
