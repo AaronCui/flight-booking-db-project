@@ -100,7 +100,6 @@ router.post('/users/updatepw', bodyParser.json(), function (req, res, next) {
 })
 
 router.post('/users/updatephone', bodyParser.json(), function (req, res, next) {
-  console.log(req.body.data)
   const email = req.body.data.email
   const phone_no = req.body.data.phone_no
 
@@ -116,6 +115,29 @@ router.post('/users/updatephone', bodyParser.json(), function (req, res, next) {
     .then(result => {
       // result[1] is the number of rows changed
       res.send('/users/' + email)
+    })
+    .catch(e=>{
+      res.send(e)
+    })
+})
+
+router.post('/users/deleteAcct', bodyParser.json(), function (req, res, next) {
+  const email = req.body.data.email
+
+  const query = ';'
+  connection.query(query,
+    {
+      type: connection.QueryTypes.UPDATE,
+      replacements: {
+        email: email
+      }
+    })
+    .then(result => {
+      // result[1] is the number of rows changed
+      res.send('/users/' + email)
+    })
+    .catch(e=>{
+      res.send(e)
     })
 })
 
