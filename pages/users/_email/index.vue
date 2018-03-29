@@ -64,7 +64,7 @@ export default {
             email: self.user.email
           }})
         .then((res) => {
-          self.$nuxt.$router.replace({ path: '../' })
+          self.$nuxt.$router.replace({ path: '/' })
           alert('User deletion successful')
         })
         .catch((e) => {
