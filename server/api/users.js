@@ -124,17 +124,36 @@ router.post('/users/updatephone', bodyParser.json(), function (req, res, next) {
 router.post('/users/deleteAcct', bodyParser.json(), function (req, res, next) {
   const email = req.body.data.email
 
-  const query = ';'
-  connection.query(query,
+  // Update has_seats_4 prior to deletion of customer account and reservations
+  const updateSeatsQRY = "UPDATE Has_Seats_4 SET Reserved = 0 " +
+                         "WHERE (seat_no, flight_no, airline) in " +
+                            "(SELECT seat_no, flight_no, airline " +
+                             "FROM Reserves_Occupies_Reservation WHERE email = :email);"
+
+  connection.query(updateSeatsQRY,
     {
       type: connection.QueryTypes.UPDATE,
       replacements: {
         email: email
       }
+  })
+  .then(result => {
+    console.log('has_seats_4 update successful')
+  })
+  .catch(e=>{
+    res.send(e) //assert that no errors occured while updating has_seats_4
+  })
+
+  const deleteQRY = 'DELETE FROM Users WHERE email = :email;'
+  connection.query(deleteQRY,
+    {
+      type: connection.QueryTypes.DELETE,
+      replacements: {
+        email: email
+      }
     })
     .then(result => {
-      // result[1] is the number of rows changed
-      res.send('/users/' + email)
+      res.status(200).json({})
     })
     .catch(e=>{
       res.send(e)

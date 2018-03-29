@@ -1104,7 +1104,7 @@ INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
 VALUES ('K10','554', 'CX', '2018-02-16', 0);
 
 INSERT INTO Has_Seats_4 (seat_no, flight_no, airline, date, reserved)
-VALUES ('L01','554', 'CX', '2018-02-16', 0);
+VALUES ('L01','554', 'CX', '2018-02-16', 1);
 
 -- RESERVES_OCCUPIES_RESERVATION
 INSERT INTO Reserves_Occupies_Reservation (reservation_id, email, seat_no, flight_no, airline, date, luggages, meal_pref)
@@ -1121,6 +1121,9 @@ VALUES('123459', 'bestAngela@lol.com', 'J10', '022', 'AA', '2018-02-16', 2, 0);
 
 INSERT INTO Reserves_Occupies_Reservation (reservation_id, email, seat_no, flight_no, airline, date, luggages, meal_pref)
 VALUES('123455', 'j.bean@gm.com', 'J11', '022', 'AA', '2018-02-16', 2, 2);
+
+INSERT INTO Reserves_Occupies_Reservation (reservation_id, email, seat_no, flight_no, airline, date, luggages, meal_pref)
+VALUES('123460', 'j.bean@gm.com', 'L01', '554', 'CX', '2018-02-16', 2, 2);
 
 -- PROMOTION_ITEM
 INSERT INTO Promotion_Item (promotion_id, promotion_item)
