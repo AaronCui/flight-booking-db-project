@@ -4,7 +4,7 @@
             <div class='subsection'>
                 <div style='margin: 25px 10px;'>
                     <span class='subsection-title' style='vertical-align: middle;'>What are you looking for? Fill in the ones that apply. </span>
-                    <span> TESTING (DELETE AFTER): Your email is {{user.email}} and access_level is {{user.access_level}} </span>
+                    <span> You are logged in with {{user.email}} </span>
                 </div>
                 <div style='margin: 10px 0;'>
                     <span class='landsat_takesoff_flight-flightno'>Flight No: </span>

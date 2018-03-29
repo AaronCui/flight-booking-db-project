@@ -9,7 +9,7 @@ router.post('/book/confirm', bodyParser.json(), function (req, res, next) {
   const d = new Date()
   // ideally we'd add more specific data like user email to avoid collision, but it gets too long, need to change db
   // Or simply use a library for UUID generator
-  const reservation_id = d.getDate() + d.getMinutes() + d.getSeconds() + d.getMilliseconds()
+  const reservation_id = '' + d.getDate() + d.getMinutes() + d.getSeconds() + d.getMilliseconds()
   const email = req.body.data.email;
   const seat_no = req.body.data.seat_no;
   const flight_no = req.body.data.flight_no;
