@@ -20,6 +20,9 @@
               <li style="padding: 10px 5px; position: relative;">
                 <nuxt-link class="button--grey" to="/">Log Out</nuxt-link>
               </li>
+              <li style="padding: 10px 5px; position: relative;">
+                <nuxt-link v-on:click="deleteAcct" class="button--grey">Delete Account</nuxt-link>
+              </li>
             </ul>
           </div>
         </div>
@@ -40,6 +43,34 @@ export default {
       .catch((e) => {
         error({ statusCode: 404, message: 'User not found' })
       })
+  },
+  methods: {
+    deleteAcct () {
+      let self = this
+      var conf = confirm('Are you sure you want to delete your account and all reservations?')
+
+      if (!conf){
+        return
+      }
+
+      axios.post('/api/users/deleteAcct', {
+        headers:
+          {
+            'Content-Type': 'application/json'
+          },
+        data:
+          {
+            email: self.user.email
+          }})
+        .then((res) => {
+          // res.data should contain the url for redirecting... bad practice
+          self.$nuxt.$router.replace({ path: res.data })
+        })
+        .catch((e) => {
+          console.log(e)
+          alert('Phone number has already been registered. Please enter a unique phone number.')
+        })
+    }
   },
   head () {
     return {

@@ -107,11 +107,12 @@ CREATE TABLE Users(
 
 CREATE TABLE Customer (
   email             CHAR(50) UNIQUE NOT NULL,
-  phone_no          CHAR(20),
+  phone_no          CHAR(20) UNIQUE,
   freq_flyer_miles 	INTEGER,
   PRIMARY KEY (email),
   FOREIGN KEY (email)
     REFERENCES Users(email)
+	ON DELETE CASCADE
 );
 
 
@@ -140,7 +141,7 @@ CREATE TABLE Reserves_Occupies_Reservation (
       ON UPDATE CASCADE,
   FOREIGN KEY (email)
     REFERENCES Customer
-      ON DELETE SET NULL
+      ON DELETE CASCADE
       ON UPDATE CASCADE
 );
 

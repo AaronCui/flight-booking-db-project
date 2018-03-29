@@ -151,19 +151,19 @@ VALUES ('smithLazy@airplaneUsers.com', 'admin', 'Adam', 'Smith', 1);
 
 -- CUSTOMERS
 INSERT INTO Customer (email, phone_no, freq_flyer_miles)
-VALUES('j.bean@gm.com', '604-999-2222', 2000);
+VALUES('j.bean@gm.com', '6049992222', 2000);
 
 INSERT INTO Customer (email, phone_no, freq_flyer_miles)
-VALUES('aaroniscool@wut.com', '778-123-1234', 0);
+VALUES('aaroniscool@wut.com', '7781231234', 0);
 
 INSERT INTO Customer (email, phone_no, freq_flyer_miles)
-VALUES('kevinSmart@ubc.com', '555-555-5555', 5000);
+VALUES('kevinSmart@ubc.com', '5555555555', 5000);
 
 INSERT INTO Customer (email, phone_no, freq_flyer_miles)
-VALUES('handsomeBrian@smooth.com', '123-456-7890', 1500);
+VALUES('handsomeBrian@smooth.com', '1234567890', 1500);
 
 INSERT INTO Customer (email, phone_no, freq_flyer_miles)
-VALUES('bestAngela@lol.com', '444-444-4444', 100);
+VALUES('bestAngela@lol.com', '4444444444', 100);
 
 -- STAFF
 INSERT INTO Staff (email, sin, level)

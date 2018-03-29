@@ -8,7 +8,7 @@
             </div>
             <div style="margin: 10px 0;">
               <span class="user-password">Phone Number: </span>
-              <input type="text" v-model="user.phone_no"/>
+              <input type="text" v-model="phone_no" v-bind:placeholder= "user.phone_no" />
             </div>
         </form>
         <button type="button" class="button--grey" v-on:click="submitUpdate">Update Phone #</button>
@@ -34,18 +34,19 @@ export default {
 
   data () {
     return {
-      selected: 'Customer',
-      options: [
-        {text: 'Customer', value: '0'},
-        {text: 'Employee', value: '1'},
-        {text: 'Admin', value: '2'}
-      ]
+      phone_no: ''
     }
   },
 
   methods: {
     submitUpdate () {
       let self = this
+      let phoneNo = self.phone_no.replace(/\D/g, '')
+
+      if (phoneNo.length < 1) {
+        alert('Please enter a phone number')
+        return
+      }
 
       axios.post('/api/users/updatephone', {
         headers:
@@ -55,7 +56,7 @@ export default {
         data:
           {
             email: self.user.email,
-            phone_no: self.user.phone_no
+            phone_no: phoneNo
           }})
         .then((res) => {
           // res.data should contain the url for redirecting... bad practice
@@ -63,6 +64,7 @@ export default {
         })
         .catch((e) => {
           console.log(e)
+          alert('Phone number has already been registered. Please enter a unique phone number.')
         })
     }
   },
