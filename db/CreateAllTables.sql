@@ -156,7 +156,8 @@ CREATE TABLE Reserves_Promotion_Item (
 	promotion_id CHAR(20),
 	PRIMARY KEY (reservation_id, promotion_id),
 	FOREIGN KEY (reservation_id)
-		REFERENCES Reserves_Occupies_Reservation (reservation_id),
+		REFERENCES Reserves_Occupies_Reservation (reservation_id)
+			ON DELETE CASCADE,
 	FOREIGN KEY (promotion_id)
 		REFERENCES Promotion_Item
 );

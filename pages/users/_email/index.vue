@@ -21,7 +21,7 @@
                 <nuxt-link class="button--grey" to="/">Log Out</nuxt-link>
               </li>
               <li style="padding: 10px 5px; position: relative;">
-                <nuxt-link v-on:click="deleteAcct" class="button--grey">Delete Account</nuxt-link>
+                <button type="button" class="button--grey" v-on:click="deleteAcct">Delete Account</button>
               </li>
             </ul>
           </div>
@@ -49,7 +49,8 @@ export default {
       let self = this
       var conf = confirm('Are you sure you want to delete your account and all reservations?')
 
-      if (!conf){
+      // confirm function delete account
+      if (!conf) {
         return
       }
 
@@ -63,12 +64,12 @@ export default {
             email: self.user.email
           }})
         .then((res) => {
-          // res.data should contain the url for redirecting... bad practice
-          self.$nuxt.$router.replace({ path: res.data })
+          self.$nuxt.$router.replace({ path: '../' })
+          alert('User deletion successful')
         })
         .catch((e) => {
           console.log(e)
-          alert('Phone number has already been registered. Please enter a unique phone number.')
+          alert('Delete Account unsuccessful')
         })
     }
   },
