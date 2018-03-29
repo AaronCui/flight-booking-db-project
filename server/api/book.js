@@ -45,15 +45,16 @@ router.post('/book/confirm', bodyParser.json(), function (req, res, next) {
 })
 
 router.post('/book/update-seat', bodyParser.json(), function (req, res, next) {
-  console.log('Updating a booked seat...');
-  const flight_no = req.body.data.flight_no;
-  const airline = req.body.data.airline;
-  const date = req.body.data.date;
-  const seat_no = req.body.data.seat_no;
+  console.log('Updating a booked seat...')
+  const flight_no = req.body.data.flight_no
+  const airline = req.body.data.airline
+  const date = req.body.data.date
+  const seat_no = req.body.data.seat_no
+  const reserved = req.body.data.reserved
 
   const query =
     'UPDATE has_seats_4 ' +
-    'SET reserved = 1 ' +
+    'SET reserved = :reserved ' +
     'WHERE flight_no = :flight_no AND airline = :airline AND date = :date AND seat_no = :seat_no;';
   connection.query(query, {
     type: connection.QueryTypes.UPDATE,
@@ -61,15 +62,16 @@ router.post('/book/update-seat', bodyParser.json(), function (req, res, next) {
       flight_no: flight_no,
       airline: airline,
       date: date,
-      seat_no: seat_no
+      seat_no: seat_no,
+      reserved: reserved
     }
   })
     .then((result) => {
-      console.log(result);
+      console.log(result)
       res.send('Seat reservation successful!')
     })
     .catch((e) => {
-      console.log(e);
+      console.log(e)
       res.send('Unable to reserve your seat. Please try again.')
     })
 })

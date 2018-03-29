@@ -92,7 +92,8 @@
                 flight_no: self.query.flight_no,
                 airline: self.query.airline,
                 date: self.query.date,
-                seat_no: self.query.seat_no
+                seat_no: self.query.seat_no,
+                reserved: 1
               }
             })
               .then((res) => {
