@@ -5,10 +5,10 @@
         <div style="margin: 25px 10px;">
           <div class="user-username" style="padding: 10px 0 10px 10px; margin: 10px 0 10px 0;">Hello {{ user.first_name }} {{user.last_name}}!</div>
           <div class="user-password" style="padding: 0 0 0 10px; margin: 10px 0 10px 0;">Your Password: {{ user.password }}</div>
-          <div style="padding: 0 0 0 10px; margin: 10px 0 10px 0;">Your Role: Customer</div>
+          <div style="padding: 0 0 0 10px; margin: 10px 0 10px 0;"> THIS IS TESTING DELETE AFTER GOOD Your Role: {{user.access_level}}</div>
           <div class="container">
             <ul style="list-style-type: none; padding: 0; margin: 0;">
-              <li style="padding: 10px 5px; position: relative;">
+              <li v-if="user.access_level == 0" style="padding: 10px 5px; position: relative;">
                 <nuxt-link class="button--grey" :to="{ path: `/users/${user.email}/updatephone`, params: { email: user.email }}">Update Phone Number</nuxt-link>
               </li>
               <li style="padding: 10px 5px; position: relative;">

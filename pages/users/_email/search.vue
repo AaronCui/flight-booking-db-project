@@ -3,7 +3,8 @@
         <div class='content'>
             <div class='subsection'>
                 <div style='margin: 25px 10px;'>
-                    <span class='subsection-title' style='vertical-align: middle;'>What are you looking for? Fill in the ones that apply. Your email is {{email}}</span>
+                    <span class='subsection-title' style='vertical-align: middle;'>What are you looking for? Fill in the ones that apply. </span>
+                    <span> TESTING (DELETE AFTER): Your email is {{user.email}} and access_level is {{user.access_level}} </span>
                 </div>
                 <div style='margin: 10px 0;'>
                     <span class='landsat_takesoff_flight-flightno'>Flight No: </span>
@@ -72,7 +73,7 @@
             <nuxt-link class='button--grey' style='margin-top: 15px; margin-left: 10px;' :to="{ path: `additional` }">Try Additional Searches</nuxt-link>
         </div>
         <div>
-            <nuxt-link class='button--grey' style='margin-top: 15px; margin-left: 10px;' :to="{ path: `/users/${email}`, params: { email: email }}">Back To Main Page</nuxt-link>
+            <nuxt-link class='button--grey' style='margin-top: 15px; margin-left: 10px;' :to="{ path: `/users/${user.email}`, params: { email: user.email }}">Back To Main Page</nuxt-link>
         </div>
     </section>
 </template>
@@ -81,12 +82,15 @@
   import axios from '~/plugins/axios'
 
   export default {
-    asyncData ({ params }) {
-      return {
-        email: params.email
-      }
+    asyncData ({ params, error }) {
+      return axios.get('/api/users/' + params.email)
+        .then((res) => {
+          return { user: res.data }
+        })
+        .catch((e) => {
+          error({ statusCode: 404, message: 'User not found' })
+        })
     },
-
     data () {
       return {
         destination: '',
