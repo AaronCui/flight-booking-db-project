@@ -9,7 +9,9 @@
                     <span class='confirm-email'>Your email is : {{user.email}}</span>
                 </div>
                 <br>
-                <button v-if="user.access_level === 0" type='button' class='button--grey' style='margin-left: 15px;' @click='check()'>Check and manage reservations</button>
+                <nuxt-link v-if="user.access_level === 0" type='button' class='button--grey' style='margin-left: 15px;' :to="{ path: `/users/${user.email}/manageReservations`, params:{ email: user.email }}">
+                    Check and manage my reservations
+                </nuxt-link>
                 <div v-if="user.access_level > 0">
                     <span>Enter a Customer's email to check his/her reservations: </span>
                     <input type='text' v-model='customer_email'/>
@@ -59,7 +61,7 @@
 
     methods: {
       check () {
-        console.log('here testsing method ')
+        console.log('here testing method ')
         axios.get(`/api/reservations/` + this.user.email, {
           headers: {
             'Content-Type': 'application/json'
