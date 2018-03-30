@@ -51,7 +51,8 @@
           alert('No reservations to show.')
           self.$nuxt.$router.replace({ path: `/users/${params.email}` })
           return {
-            email: params.email
+            email: params.email,
+            reservations: {}
           }
         })
     },
