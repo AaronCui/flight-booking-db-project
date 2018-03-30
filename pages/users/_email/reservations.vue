@@ -2,15 +2,25 @@
     <section class="reservations-view">
         <div class="content">
             <div class="subsection">
-                <div style="margin: 25px 10px;">
+                <div>
                     <span class="subsection-title" style="vertical-align: middle;">Reservations</span>
                 </div>
                 <ul style="list-style-type: none; padding: 0; margin: 0;">
                     <li v-for="(reservation, index) in reservations" :key="index" style="padding: 10px 20px; margin: 0 25px; position: relative;">
-                        <div>Reservation # :"{{ reservation.reservation_id }}"</div>
+                        <div>Reservation # {{ reservation.reservation_id }}</div>
                         <div>
-                            <span style="color:green;">Route: {{ reservation.takesoff_airport }} --> {{ reservation.landsat_airport}}</span>
-                            <span style="color:blue;">Date: {{ reservation.date }}</span>
+                            <ul>
+                                <li>
+                                    <span style="color:blue;">Flight: {{ reservation.airline }} {{ reservation.flight_no}} </span>
+                                    <span style="color:blue;"> on  Date: {{ reservation.date }}</span>
+                                </li>
+                                <li>
+                                    <span style="color:blue;">Seat No: {{ reservation.seat_no }}</span>
+                                </li>
+                                <li>
+                                    <span style="color:green;">Route: {{ reservation.takesoff_airport }} --> {{ reservation.landsat_airport}}</span>
+                                </li>
+                            </ul>
                             <button type="button" style="margin-left: 20px; padding: 10px 20px; text-decoration: none;" @click="deleteReservation(reservation.reservation_id, reservation.email)">
                                 Cancel Reservation
                             </button>
@@ -40,6 +50,9 @@
         .catch((e) => {
           alert('No reservations to show.')
           self.$nuxt.$router.replace({ path: `/users/${params.email}` })
+          return {
+            email: params.email
+          }
         })
     },
 
